@@ -15,6 +15,6 @@ let store = createStore(
 	applyMiddleware(logger, thunk)
 )
 
-store.dispatch({type: TYPES.RUN_THE_APP, payload: true });
+
 
 export default store;

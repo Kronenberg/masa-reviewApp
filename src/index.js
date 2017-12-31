@@ -4,5 +4,16 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import { Provider } from 'react-redux'
+import store from './store/store';
+
+const MasaReviewApp = () => {
+	return (
+	<Provider store={store}>
+    	<App />
+ 	</Provider>)
+}
+
+
+ReactDOM.render(<MasaReviewApp />, document.getElementById('root'));
 registerServiceWorker();

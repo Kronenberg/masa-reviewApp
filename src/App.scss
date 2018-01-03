@@ -1,8 +1,5 @@
 .App {
   text-align: center;
-
-
-
   &__header {
     background-color: #222;
     height: 150px;
@@ -28,14 +25,8 @@
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
-    img path{
-      fill: #639;
-    }
   }
   to {
     transform: rotate(360deg);
-    img path{
-      fill: #fff;
-    }
   }
 }

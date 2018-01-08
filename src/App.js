@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+<<<<<<< HEAD
 
 
 import { NavLink } from 'react-router-dom';
@@ -6,11 +7,17 @@ import { NavLink } from 'react-router-dom';
 import Routs from './routs';
 
 
+import logo from './logo.svg';
+import './App.css';
+import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
+
+
 
 class App extends Component {
   render() {
     return (
       <div>
+
         <nav>
           <ul>
             
@@ -21,6 +28,13 @@ class App extends Component {
           </ul>
         </nav>
         <Routs />
+
+        <Switch>
+          <Route exact path='/' component={Home} />
+          <Route path='/program' component={Program} />
+          <Route path='/chat' component={Chat} />
+        </Switch>
+
       </div>
     );
   }

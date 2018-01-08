@@ -6,7 +6,7 @@ class Chat extends Component {
   }
   render(){
     return(
-      <div>Someday I'll be the chat!</div>
+      <div>Someday I will be the chat!</div>
     );
   }
 }

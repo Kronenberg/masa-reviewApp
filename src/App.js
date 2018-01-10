@@ -17,7 +17,7 @@ class App extends Component {
             <li><NavLink to="/" activeClassName="selected">Home</NavLink></li>
             <li><NavLink to="/programs" activeClassName="selected">Programs</NavLink></li>
             <li><NavLink to="/chat" activeClassName="selected">Chat</NavLink></li>
-            <li><NavLink to="/messagewall" activeClassName="selected">MessagesWall</NavLink></li>
+            <li><NavLink to="/messageswall" activeClassName="selected">MessagesWall</NavLink></li>
             
           </ul>
         </nav>

@@ -13,21 +13,24 @@ class MessagesWall extends Component{
     }
     shouldComponentUpdate(nextProps, nextState){
         if(this.state.messages !== nextState.messages){
+
             return true
+        }
+
+        if(this.props.notification !== nextProps.notification){
+            console.log(nextProps.notification)
+        
         }
         if(nextProps.messages && nextProps.messages.length > 0){
   
             const messages = nextProps.messages.map((item)=>{
                 var childrenOfDoom = []
-                console.log(item)
                 if(item.comments){
                     for(var key in item.comments){
-                        console.log('comment')
                         childrenOfDoom.push(<Message value={item.comments[key].value} key={key} index={item.comments[key].index} />)
                     }
                 }
 
-                console.log(childrenOfDoom)
                 return <Message value={item.message} key={item.index} index={item.index} children={childrenOfDoom}/>
             })
 
@@ -49,10 +52,10 @@ class MessagesWall extends Component{
     }
 }
 
-const mapStateToProps = ({messages})=>{
-    //console.log(messages)
+const mapStateToProps = ({messages, notification})=>{
     return {
-        messages
+        messages,
+        notification
     }
 }
 

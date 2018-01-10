@@ -9,7 +9,8 @@ class Message extends Component{
         overflow: true,
         showButton: null,
         message: null,
-        visible: 'none'
+        visible: 'none',
+        showInput: false
     }
     
     componentWillReceiveProps(){
@@ -27,10 +28,12 @@ class Message extends Component{
         e.preventDefault();
 
         this.props.dispatchComments({value, index: this.props.index})
+
+        this.setState({showInput: false})
     }
     render(){
         const { value } = this.props;
-        const { overflow, visible, message} = this.state;
+        const { overflow, visible, message, showInput} = this.state;
 
         return(
             <div style={{ padding: '20px'}}>
@@ -44,7 +47,8 @@ class Message extends Component{
                        value={overflow ? 'show all' : 'hide'}
                        style={{display: visible}}
                        onClick={() => this.setState({ overflow: !overflow })} />
-                <InputField handleComment={this.handleComment} comment={true} message={false}/>
+                <button onClick={()=>this.setState({showInput: !showInput})}>comment</button>
+                { showInput ? <InputField handleComment={this.handleComment} comment={true} message={false}/> : null }
                        <div>
                          {this.props.children}
                        </div>

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import StyleTag from './StyleTag';
 import Message from './Message';
+import { connect } from 'react-redux';
+import { dispatchMessages } from '../../actions/globalActions'
 
 class InputWallMessage extends Component {
     state={
@@ -14,12 +16,15 @@ class InputWallMessage extends Component {
         e.preventDefault();
 
         const { messages, value } = this.state;
-        this.setState({ 
-                        messages: [...messages, <Message key={messages.length} value={value}/>],
-                        selectionStart: null,
-                        selectionEnd: null,
-                        value: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-                      })
+        const index = this.props.messages.length
+        // this.setState({ 
+        //                 messages: [...messages, <Message key={messages.length} value={value}/>],
+        //                 selectionStart: null,
+        //                 selectionEnd: null,
+        //                 value: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+        //               })
+
+        this.props.dispatchMessages({value, index})
     }
     handleStyles=(tag)=>{
         var { value } = this.state;
@@ -75,4 +80,10 @@ class InputWallMessage extends Component {
     }
 }
 
-export default InputWallMessage
+const mapStateToProps = ({messages})=>{
+    return {
+        messages
+    }
+}
+
+export default connect(mapStateToProps, { dispatchMessages })(InputWallMessage);

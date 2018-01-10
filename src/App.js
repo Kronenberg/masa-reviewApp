@@ -8,7 +8,6 @@ class App extends Component {
     return (
       <div className="App">
         <MessagesWall />
-        <h1>VERY MINIMAL APP WITH WHITE SPACE :)</h1>
       </div>
     );
   }

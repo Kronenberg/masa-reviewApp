@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { dispatchMessages } from '../../actions/globalActions'
 
 class Message extends Component{
 
@@ -39,4 +41,4 @@ class Message extends Component{
     }
 }
 
-export default Message;
+export default connect(null, { dispatchMessages })(Message);

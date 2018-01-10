@@ -15,6 +15,13 @@ export const dispatchMessages = (message) =>(dispatch, getState, getFirebase) =>
 		});
 };
 
+
+export const dispatchComments = (comment) => (dispatch, getState, getFirebase) => {
+	const firebase = getFirebase()
+	firebase.database().ref(`messages/${comment.index}/comments`)
+		.push(comment)
+};
+
 export const fetchMessages = () => (dispatch, getState, getFirebase) => {
 	const firebase = getFirebase()
 	const messages = firebase.database().ref('messages/')

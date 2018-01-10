@@ -8,9 +8,6 @@ import { BrowserRouter } from 'react-router-dom';
 
 
 
-import { BrowserRouter, Route, Link } from 'react-router-dom';
-
-
 ReactDOM.render((
 	<BrowserRouter>
 		<App />

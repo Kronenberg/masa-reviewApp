@@ -1,4 +1,4 @@
-import * as TYPES from '../ActionsTypes/TYPES';
+import * as TYPES from '../ActionsTYPES/TYPES';
 
 export function runTheApp() {
 	return {

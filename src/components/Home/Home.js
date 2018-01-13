@@ -26,7 +26,7 @@ class Home extends Component {
     return(
       <div>
         <div>
-            {this.props.groupStatus.pending ? 'Loading...' : groups }
+            {this.props.groupStatus.pending ? 'Loading' : groups }
         </div>
       </div>
     );

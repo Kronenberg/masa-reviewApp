@@ -7,6 +7,8 @@ class Programs extends Component {
     // this.props.getPostsByGroupName(this.props.ActiveRouteName);
   }
 
+  // cherry-pick YOYO
+
   render(){
     console.log(this.props);
     return(

@@ -1,20 +1,12 @@
 import React, { Component } from 'react';
-
-import { NavLink } from 'react-router-dom';
-
-import Routs from './routs';
-
-
-import logo from './logo.svg';
 import './App.css';
-
-
+import { NavLink } from 'react-router-dom';
+import Routs from './routs';
 
 class App extends Component {
   render() {
     return (
       <div>
-
         <nav>
           <ul>
             
@@ -25,7 +17,6 @@ class App extends Component {
           </ul>
         </nav>
         <Routs />
-
       </div>
     );
   }

@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 
 class Programs extends Component {
-  constructor(){
-    super();
+  
+  componentWillMount() {
+    // GETALL_POSTS_BY_GROUP_NAME
+    // this.props.getPostsByGroupName(this.props.ActiveRouteName);
   }
+
   render(){
+    console.log(this.props);
     return(
-      <div>I contain all programs!</div>
+      <div>{this.props.location.pathname}</div>
     );
   }
 }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { withRouter } from 'react-router'
 import { savePost } from '../../../actions/events';
 import ReactModal from 'react-modal';
@@ -27,7 +28,6 @@ class CreatePostModal extends React.Component {
         const { groups } = this.props;
         const { groupTitle } = this.props.match.params;
 
-        console.log(groups)
         this.setState({ showModal: false });
         this.props.savePost({text: postContext, groupTitle, postIndex: groups[groupTitle].posts.length} )
     }
@@ -65,6 +65,11 @@ const mapStateToProps = (state) => {
     }
 }
 
+const mapDispatchToProps = (dispatch) => {
+    return {
+        savePost: bindActionCreators(savePost, dispatch),
+    }
+}
 
 
-export default connect(mapStateToProps, { savePost })(withRouter(CreatePostModal));
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(CreatePostModal));

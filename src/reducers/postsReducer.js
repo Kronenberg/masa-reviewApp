@@ -1,6 +1,5 @@
 import {
-    FETCH_POSTS,
-
+    FETCH_POSTS
 } from '../ActionsTYPES/TYPES';
 
 const initialState = {}

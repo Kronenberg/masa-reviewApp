@@ -19,6 +19,7 @@ class Home extends Component {
     var groups = [];
     if(this.props.groupStatus && this.props.groupStatus.groups) {   
       _.mapValues(this.props.groupStatus.groups, (item) => {
+
         groups.push(
           <Group 
             key={item.index}

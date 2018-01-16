@@ -13,7 +13,7 @@ class App extends Component {
                 <meta charSet="utf-8" />
                 <title>MASA REVIEW APPLICATION</title>
                 <link rel="canonical" href="https://stark-atoll-57647.herokuapp.com/" />
-            </Helmet>
+          </Helmet>
         <nav>
           <ul>
             <li><NavLink to="/" activeClassName="selected">Home</NavLink></li>

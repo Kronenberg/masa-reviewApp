@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { getAllGroups } from '../../actions/senders';
 import Group from './components/group';
-import group from './components/group';
+import _ from 'lodash'
 
 class Home extends Component {
   constructor(){
@@ -15,18 +15,23 @@ class Home extends Component {
   }
 
   render(){
-    console.log('[Home Component][render]');
-    const groups = this.props.groupStatus && this.props.groupStatus.groups  ? this.props.groupStatus.groups.map(item => (
-      <Group 
-        key={item.nameUS}
-        title={item.nameUS}
-      />
-    )
-  ) : [];
+    console.log(this.props.groupStatus);
+    var groups = [];
+    if(this.props.groupStatus && this.props.groupStatus.groups) {   
+      _.mapValues(this.props.groupStatus.groups, (item) => {
+        groups.push(
+          <Group 
+            key={item.index}
+            title={item.nameUS}
+            index={item.index}
+          />
+        )
+       })
+    }
     return(
-      <div>
+      <div style={{padding: '20px'}}>
         <div>
-            {this.props.groupStatus.pending ? 'Loading' : groups }
+            {this.props.groupStatus.pending && !groups ? 'Loading' : groups }
         </div>
       </div>
     );

@@ -1,21 +1,21 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import rootReducer from '../reducers/rootReducer';
-import firebase from 'firebase';
+import firebase, { storage } from 'firebase';
 import { reactReduxFirebase, getFirebase } from 'react-redux-firebase';
 
 // REMOTE REDUCERS
 import { createLogger } from 'redux-logger'
 import thunk from 'redux-thunk';
 import  { runTheApp } from '../actions/globalActions';
- 
+import  { fetchPosts } from '../actions/events' ;
 const fbConfig = {
-	apiKey: "AIzaSyBxeJ64H8GH4NXT_fy5S0ATdG9w4fAKfmk",
-	authDomain: "masa-wall.firebaseapp.com",
-	databaseURL: "https://masa-wall.firebaseio.com",
-	projectId: "masa-wall",
-	storageBucket: "masa-wall.appspot.com",
-	messagingSenderId: "1008969413809"
-	}
+	apiKey: "AIzaSyC29RdE1-GOOrw_db5EhI0bn4hrWhR3Z1s",
+	authDomain: "masa-projects-posts.firebaseapp.com",
+	databaseURL: "https://masa-projects-posts.firebaseio.com",
+	projectId: "masa-projects-posts",
+	storageBucket: "masa-projects-posts.appspot.com",
+	messagingSenderId: "457533567638"
+}
 
 const config = {
 	userProfile: 'users', // firebase root where user profiles are stored
@@ -45,5 +45,6 @@ const store = createStore(
 
 
 store.dispatch(runTheApp())
+store.dispatch(fetchPosts())
 
 export default store;

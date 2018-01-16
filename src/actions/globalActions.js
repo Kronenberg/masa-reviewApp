@@ -7,6 +7,7 @@ export function runTheApp() {
 	}
 }
 
+
 export default {
 	runTheApp
 }

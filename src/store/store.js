@@ -9,12 +9,12 @@ import thunk from 'redux-thunk';
 import  { runTheApp } from '../actions/globalActions';
  
 const fbConfig = {
-	apiKey: "AIzaSyBxeJ64H8GH4NXT_fy5S0ATdG9w4fAKfmk",
-	authDomain: "masa-wall.firebaseapp.com",
-	databaseURL: "https://masa-wall.firebaseio.com",
-	projectId: "masa-wall",
-	storageBucket: "masa-wall.appspot.com",
-	messagingSenderId: "1008969413809"
+	apiKey: "AIzaSyC29RdE1-GOOrw_db5EhI0bn4hrWhR3Z1s",
+    authDomain: "masa-projects-posts.firebaseapp.com",
+    databaseURL: "https://masa-projects-posts.firebaseio.com",
+    projectId: "masa-projects-posts",
+    storageBucket: "masa-projects-posts.appspot.com",
+    messagingSenderId: "457533567638"
 	}
 
 const config = {

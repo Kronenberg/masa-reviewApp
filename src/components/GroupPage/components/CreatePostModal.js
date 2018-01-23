@@ -27,7 +27,7 @@ class CreatePostModal extends React.Component {
         const { groups } = this.props;
         const { groupTitle } = this.props.match.params;
 
-        console.log(groups)
+        //console.log(groups)
         this.setState({ showModal: false });
         this.props.savePost({text: postContext, groupTitle, postIndex: groups[groupTitle].posts.length} )
     }

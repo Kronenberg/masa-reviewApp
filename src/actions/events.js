@@ -23,3 +23,4 @@ export const fetchPosts = () => (dispatch, getState, getFirebase) => {
         dispatch({ type: FETCH_POSTS, payload: snapshot.val() || [] })
     });
 };
+

@@ -4,6 +4,9 @@ import { bindActionCreators } from 'redux';
 import { getAllGroups } from '../../actions/senders';
 import Group from './components/group';
 import _ from 'lodash'
+import { createAccount, createAccountToInitial } from '../../actions/auth';
+
+
 
 class Home extends Component {
   constructor(){
@@ -12,10 +15,11 @@ class Home extends Component {
 
   componentWillMount() {
     this.props.getAllGroups();
+    this.props.createAccount('bigcheeseh@gmail.com', '123456')
   }
 
   render(){
-    console.log(this.props.groupStatus);
+    //console.log(this.props.groupStatus);
     var groups = [];
     if(this.props.groupStatus && this.props.groupStatus.groups) {   
       _.mapValues(this.props.groupStatus.groups, (item) => {
@@ -31,7 +35,7 @@ class Home extends Component {
     return(
       <div style={{padding: '20px'}}>
         <div>
-            {this.props.groupStatus.pending && !groups ? 'Loading' : groups }
+            {this.props.groupStatus.pending ? 'Loading' : groups }
         </div>
       </div>
     );
@@ -47,6 +51,7 @@ const mapStateToProps = (state) => {
 const  mapDispatchToProps = (dispatch) => {
   return {
     getAllGroups: bindActionCreators(getAllGroups, dispatch),
+    createAccount: bindActionCreators(createAccount, dispatch)
   }
 }
   

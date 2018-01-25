@@ -6,7 +6,8 @@ const initialState = {
     rejected: false,
     emailSended: false,
     userData: null,
-    error: null
+    error: null,
+    login: false
 }
 
 function authReducer(state = initialState, action) {
@@ -17,7 +18,7 @@ function authReducer(state = initialState, action) {
                 pending: true
             }
         }
-        case TYPES.CREATE_ACCOUT_SUCCESS: {
+        case TYPES.CREATE_ACCOUNT_SUCCESS: {
             return {
                 ...state,
                 pending: false,
@@ -62,6 +63,32 @@ function authReducer(state = initialState, action) {
                 rejected: false,
                 userData: null,
                 error: null
+            }
+        }
+        case TYPES.LOGIN_ACCOUNT_PENDING: {
+            return {
+                ...state,
+                pending: true
+            }
+        }
+        case TYPES.LOGIN_ACCOUNT_SUCCESS: {
+            return {
+                ...state,
+                pending: false,
+                success: true,
+                rejected: false,
+                userData: action.payload,
+                login: true
+            }
+        }
+        case TYPES.LOGIN_ACCOUNT_REJECTED: {
+            return {
+                ...state,
+                pending: false,
+                success: false,
+                rejected: true,
+                userData: action.payload,
+                login: false
             }
         }
 

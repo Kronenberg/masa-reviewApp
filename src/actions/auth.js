@@ -1,8 +1,11 @@
 import {
     CREATE_ACCOUNT_PENDING,
-    CREATE_ACCOUT_SUCCESS,
+    CREATE_ACCOUNT_SUCCESS,
     CREATE_ACCOUNT_REJECTED,
-    CREATE_ACCOUNT_TO_INITIAL
+    CREATE_ACCOUNT_TO_INITIAL,
+    LOGIN_ACCOUNT_PENDING,
+    LOGIN_ACCOUNT_REJECTED,
+    LOGIN_ACCOUNT_SUCCESS
 } from '../ActionsTYPES/TYPES';
 import { createFirebaseConnect } from 'react-redux-firebase';
 
@@ -41,7 +44,7 @@ export const createAccount = (email, password) =>
     firebase.auth().createUserWithEmailAndPassword(email, password)
       .then((userData) => {
        
-        dispatch({ type: CREATE_ACCOUT_SUCCESS, payload: userData });
+        dispatch({ type: CREATE_ACCOUNT_SUCCESS, payload: userData });
        
     })
       .catch((error) => {
@@ -56,12 +59,12 @@ export const loginViaFirebase = (email, password) =>
   (dispatch, getState, getFirebase) => {
     const firebase = getFirebase();
 
-    dispatch({ type: CREATE_ACCOUNT_PENDING });
+    dispatch({ type: LOGIN_ACCOUNT_PENDING });
 
     firebase.auth().signInWithEmailAndPassword(email, password)
     
     .then((userData)=>{
-
+      dispatch({ type: LOGIN_ACCOUNT_SUCCESS, payload: userData})
     })
     .catch(function (error) {
       // Handle Errors here.

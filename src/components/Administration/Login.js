@@ -5,11 +5,28 @@ import { loginViaFirebase } from '../../actions/auth';
 
 
 
-class Register extends Component {
+class Login extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            emailVerified: false
+        } 
+    }
+    
+    componentWillReceiveProps(nextProps) {
+        console.log(nextProps, "fvrvrgvrvrvbr");
+        this.setState({
+            emailVerified: nextProps.user.emailVerified
 
+        })
+    }
+    
     loginViaFirebase = ({ email, password }) => {
         this.props.loginViaFirebase(email, password)
     }
+
+    
+
 
     render() {
         return (
@@ -17,9 +34,16 @@ class Register extends Component {
             <div>
                 <h1>Login</h1>
                 <Administration register={this.loginViaFirebase} />
+                {this.state.emailVerified ? null : <h1>Check email</h1>}
             </div>
         )
     }
 }
 
-export default connect(null, { loginViaFirebase })(Register)
+const mapStateToProps = (state) => {
+    return {
+        user: state.authReducer
+    }
+} 
+
+export default connect(mapStateToProps, { loginViaFirebase })(Login)

@@ -5,7 +5,10 @@ import {
     CREATE_ACCOUNT_TO_INITIAL,
     LOGIN_ACCOUNT_PENDING,
     LOGIN_ACCOUNT_REJECTED,
-    LOGIN_ACCOUNT_SUCCESS
+    LOGIN_ACCOUNT_SUCCESS,
+    EMAIL_VERIFIED_SUCCESS,
+    EMAIL_VERIFIED_FAIL
+
 } from '../ActionsTYPES/TYPES';
 import { createFirebaseConnect } from 'react-redux-firebase';
 
@@ -64,7 +67,17 @@ export const loginViaFirebase = (email, password) =>
     firebase.auth().signInWithEmailAndPassword(email, password)
     
     .then((userData)=>{
+      
+      // add this user to local storage
       dispatch({ type: LOGIN_ACCOUNT_SUCCESS, payload: userData})
+    })
+
+    .then(() => {
+      if (firebase.auth().currentUser.emailVerified) {
+        dispatch({type: EMAIL_VERIFIED_SUCCESS});
+      } else {
+        dispatch({type: EMAIL_VERIFIED_FAIL});
+      }
     })
     .catch(function (error) {
       // Handle Errors here.
@@ -72,6 +85,7 @@ export const loginViaFirebase = (email, password) =>
       var errorMessage = error.message;
     });
   }
+
 
 
 export const createAccountToInitial = () => {

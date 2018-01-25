@@ -13,6 +13,7 @@ class Register extends Component{
         this.props.createAccount(email, password)
     }
 
+    
     render(){
         return (
             <div>

@@ -7,7 +7,8 @@ const initialState = {
     emailSended: false,
     userData: null,
     error: null,
-    login: false
+    login: false,
+    emailVerified: false
 }
 
 function authReducer(state = initialState, action) {
@@ -91,6 +92,22 @@ function authReducer(state = initialState, action) {
                 login: false
             }
         }
+
+        case TYPES.EMAIL_VERIFIED_SUCCESS: {
+            return {
+                ...state,
+                emailVerified: true
+            }
+        }
+
+        case TYPES.EMAIL_VERIFIED_FAIL: {
+            return {
+                ...state,
+                emailVerified: false
+            }
+        }
+
+
 
         default: {
             return state;

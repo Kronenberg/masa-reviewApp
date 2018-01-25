@@ -5,7 +5,7 @@ import { getAllGroups } from '../../actions/senders';
 import Group from './components/group';
 import _ from 'lodash'
 import { createAccount, createAccountToInitial } from '../../actions/auth';
-
+import './home.css';
 
 
 class Home extends Component {
@@ -28,13 +28,15 @@ class Home extends Component {
             key={item.index}
             title={item.nameUS}
             index={item.index}
+            image={item.image}
           />
         )
-       })
+      })
+
     }
     return(
       <div style={{padding: '20px'}}>
-        <div>
+        <div className="cards">
             {this.props.groupStatus.pending ? 'Loading' : groups }
         </div>
       </div>

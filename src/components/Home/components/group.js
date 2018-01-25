@@ -8,11 +8,17 @@ class Group extends Component {
   }
   render(){
     return(
-      <div>
-        <NavLink to={`/${this.props.title}`}>{this.props.title}</NavLink>
-      </div>
+      <NavLink to={`/${this.props.title}`}>
+        <div className="card">
+          <img src={this.props.image}/>
+          <div className="groupName">
+            <p className="title">{this.props.title}</p>
+          </div>
+        </div>
+      </NavLink>
     );
   }
+
 }
 
 export default Group;

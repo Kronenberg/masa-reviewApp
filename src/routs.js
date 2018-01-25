@@ -6,13 +6,17 @@ import Chat from './components/Chat/Chat';
 import Programs from './components/Programs/Programs';
 import Home from './components/Home/Home';
 import GroupPage from './components/GroupPage/GroupPage';
+import Register from './components/Administration/Register';
+import Login from './components/Administration/Login';
 
 const Routs = () => (
     <Switch>
       <Route exact path='/' component={Home} />
+      <Route exact path='/programs' component={Programs} />
+      <Route exact path='/chat' component={Chat} />
+      <Route exact path='/register' component={Register} />
+      <Route exact path='/login' component={Login} />
       <Route exact path='/:groupTitle' component={GroupPage} />
-      <Route path='/programs' component={Programs} />
-      <Route path='/chat' component={Chat} />
     </Switch>
   )
 

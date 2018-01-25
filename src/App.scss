@@ -1,0 +1,30 @@
+@import "variables.scss";
+
+body {
+    font-family: $font-open-sans;
+    margin: 0;
+}
+
+nav {
+    display: flex;
+    font-family: $font-monserrat;
+    justify-content: space-between;
+    padding: 5px 20px;
+    @include box-shadow-size(0, 1px, 1px, #555);
+    ul {
+        li {
+            display: inline-block;
+            margin: 0 5px;
+            a {
+              text-decoration: none;
+            }
+        }
+    }
+
+    .logo {
+        margin: 0 16px;
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: $heading;
+    }
+}

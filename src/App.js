@@ -15,11 +15,19 @@ class App extends Component {
                 <link rel="canonical" href="https://stark-atoll-57647.herokuapp.com/" />
           </Helmet>
         <nav>
-          <ul>
-            <li><NavLink to="/" activeClassName="selected">Home</NavLink></li>
-            <li><NavLink to="/programs" activeClassName="selected">Programs</NavLink></li>
-            <li><NavLink to="/chat" activeClassName="selected">Chat</NavLink></li>
-          </ul>
+          <div>
+              <ul>
+                <li><NavLink to="/" activeClassName="selected" className="logo">Logo</NavLink></li>
+                <li><NavLink to="/" activeClassName="selected">Programs</NavLink></li>
+                <li><NavLink to="/chat" activeClassName="selected">Chat</NavLink></li>
+              </ul>
+          </div>
+          <div>
+              <ul>
+                <li><NavLink to="/register" activeClassName="selected">Sign In</NavLink></li>
+                <li><NavLink to="/login" activeClassName="selected">Log In</NavLink></li>
+              </ul>
+          </div>
         </nav>
         <Routs />
       </div>

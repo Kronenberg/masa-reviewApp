@@ -1,0 +1,30 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,600,600i,700,700i,900|Open+Sans:300,300i,400,700);
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around; }
+  .cards .card {
+    -webkit-box-shadow: 0.5px 0.5px 0.5px #333;
+    -moz-box-shadow: 0.5px 0.5px 0.5px #333;
+    -ms-box-shadow: 0.5px 0.5px 0.5px #333;
+    box-shadow: 0.5px 0.5px 0.5px #333;
+    position: relative;
+    width: 350px;
+    transition: box-shadow .3s; }
+    .cards .card img {
+      width: 100%; }
+    .cards .card .groupName {
+      position: relative;
+      padding: 20px; }
+      .cards .card .groupName .title {
+        font-size: 18px;
+        color: black;
+        margin: 0; }
+  .cards .card:hover {
+    -webkit-box-shadow: 2px 2px 3px #AAA;
+    -moz-box-shadow: 2px 2px 3px #AAA;
+    -ms-box-shadow: 2px 2px 3px #AAA;
+    box-shadow: 2px 2px 3px #AAA; }
+
+a {
+  text-decoration: none; }

@@ -4,6 +4,7 @@ const initialState = {
     pending: false,
     success: false,
     rejected: false,
+    emailSended: false,
     userData: null,
     error: null
 }
@@ -23,6 +24,25 @@ function authReducer(state = initialState, action) {
                 success: true,
                 rejected: false,
                 userData: action.payload
+            }
+        }
+        case TYPES.EMAIL_VERIFIED_SENDED: {
+            return {
+                ...state,
+                pending: false,
+                success: true,
+                rejected: false,
+                emailSended: true,
+                userData: action.payload
+            }
+        }
+        case TYPES.EMAIL_VERIFIED_ERROR: {
+            return {
+                ...state,
+                pending: false,
+                success: false,
+                rejected: false,
+                error: action.payload
             }
         }
         case TYPES.CREATE_ACCOUNT_REJECTED: {

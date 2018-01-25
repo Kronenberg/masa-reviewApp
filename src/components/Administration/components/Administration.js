@@ -14,10 +14,9 @@ const renderFields = () => {
 
 
 const Register = (props) => {
-    console.log(props);
-    const { handleSubmit, pristine, reset, submitting, myAction } = props
+    const { handleSubmit, pristine, reset, submitting, register } = props
     return (
-        <form onSubmit={handleSubmit(myAction)}>
+        <form onSubmit={handleSubmit(register)}>
             { renderFields() }
             <div>
                 <button type="submit" disabled={submitting}>Submit</button>

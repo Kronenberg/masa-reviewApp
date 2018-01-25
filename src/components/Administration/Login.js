@@ -1,19 +1,25 @@
 import React, { Component } from 'react';
 import Administration from './components/Administration';
+import { connect } from 'react-redux';
+import { loginViaFirebase } from '../../actions/auth';
 
-const myAction = (e) => {
-    console.log(e)
+
+
+class Register extends Component {
+
+    loginViaFirebase = ({ email, password }) => {
+        this.props.loginViaFirebase(email, password)
+    }
+
+    render() {
+        return (
+
+            <div>
+                <h1>Login</h1>
+                <Administration register={this.loginViaFirebase} />
+            </div>
+        )
+    }
 }
 
-
-const Login = () => {
-
-    return (
-        <div>
-            <h1>Login</h1>
-            <Administration myAction={myAction} />
-        </div>
-    )
-}
-
-export default Login
+export default connect(null, { loginViaFirebase })(Register)

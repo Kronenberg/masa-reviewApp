@@ -7,6 +7,7 @@ import {Helmet} from "react-helmet";
 
 class App extends Component {
   render() {
+    console.log(process.env)
     return (
       <div>
          <Helmet>
@@ -24,8 +25,8 @@ class App extends Component {
           </div>
           <div>
               <ul>
-                <li><NavLink to="/register" activeClassName="selected">Sign In</NavLink></li>
-                <li><NavLink to="/login" activeClassName="selected">Log In</NavLink></li>
+                <li><NavLink to="/administration/register" activeClassName="selected">Sign In</NavLink></li>
+                <li><NavLink to="/administration/login" activeClassName="selected">Log In</NavLink></li>
               </ul>
           </div>
         </nav>

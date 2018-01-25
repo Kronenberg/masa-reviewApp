@@ -15,7 +15,6 @@ class Home extends Component {
 
   componentWillMount() {
     this.props.getAllGroups();
-    this.props.createAccount('bigcheeseh@gmail.com', '123456')
   }
 
   render(){

@@ -1,19 +1,26 @@
 import React, { Component } from 'react';
 import Administration from './components/Administration';
+import { connect } from 'react-redux';
+import { createAccount } from '../../actions/auth';
 
-const myAction = (e) => {
-    console.log(e)
+
+
+class Register extends Component{
+
+    createAccount = ({email, password}) => {
+
+        console.log(email, password)
+        this.props.createAccount(email, password)
+    }
+
+    render(){
+        return (
+            <div>
+                <h1>Registration</h1> 
+                <Administration register={this.createAccount}/>
+            </div>
+        )
+    }
 }
 
-
-const Register = () => {
-
-    return (
-        <div>
-            <h1>Registration</h1> 
-            <Administration myAction={myAction}/>
-        </div>
-    )
-}
-
-export default Register
+export default connect(null, { createAccount })(Register)

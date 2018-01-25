@@ -14,9 +14,9 @@ const Routs = () => (
       <Route exact path='/' component={Home} />
       <Route exact path='/programs' component={Programs} />
       <Route exact path='/chat' component={Chat} />
-      <Route exact path='/register' component={Register} />
-      <Route exact path='/login' component={Login} />
       <Route exact path='/:groupTitle' component={GroupPage} />
+      <Route exact path='/administration/register' component={Register} />
+      <Route exact path='/administration/login' component={Login} />
     </Switch>
   )
 

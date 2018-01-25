@@ -40,10 +40,7 @@ export const createAccount = (email, password) =>
     
     firebase.auth().createUserWithEmailAndPassword(email, password)
       .then((userData) => {
-        //  localStorage.setItem() < KTO
-         // iS VERIFIED
-         // FIRST TIME USER?????????
-        console.log(firebase.auth().currentUser, 'auth user infi')
+       
         dispatch({ type: CREATE_ACCOUT_SUCCESS, payload: userData });
        
     })
@@ -54,6 +51,24 @@ export const createAccount = (email, password) =>
         dispatch({ type: CREATE_ACCOUNT_REJECTED, payload: errorMessage });
       });
 }
+
+export const loginViaFirebase = (email, password) =>
+  (dispatch, getState, getFirebase) => {
+    const firebase = getFirebase();
+
+    dispatch({ type: CREATE_ACCOUNT_PENDING });
+
+    firebase.auth().signInWithEmailAndPassword(email, password)
+    
+    .then((userData)=>{
+
+    })
+    .catch(function (error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+    });
+  }
 
 
 export const createAccountToInitial = () => {

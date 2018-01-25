@@ -7,7 +7,7 @@ nav {
   display: flex;
   font-family: "Montserrat", sans-serif;
   justify-content: space-between;
-  padding: 5px 20px;
+  padding: 5px 30px;
   -webkit-box-shadow: 0 1px 1px #555;
   -moz-box-shadow: 0 1px 1px #555;
   -ms-box-shadow: 0 1px 1px #555;
@@ -18,7 +18,7 @@ nav {
     nav ul li a {
       text-decoration: none; }
   nav .logo {
-    margin: 0 16px;
+    margin: 16px 0;
     text-transform: uppercase;
     font-weight: bold;
     font-size: 18px; }

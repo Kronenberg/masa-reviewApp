@@ -34,16 +34,11 @@ const store = createStore(
 	rootReducer,
 	initialState,
 	compose(
-	applyMiddleware(logger, thunk.withExtraArgument(getFirebase)), // Pass getFirebase function as extra argument
+		applyMiddleware(logger, thunk.withExtraArgument(getFirebase)
+	), // Pass getFirebase function as extra argument
 	reactReduxFirebase(firebase, config)
 	)
 );
-
-// let store = createStore(
-// 	rootReducer,
-// 	applyMiddleware(logger, thunk)
-// )
-
 
 store.dispatch(runTheApp())
 store.dispatch(authListener())

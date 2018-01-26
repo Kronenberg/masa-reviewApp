@@ -9,7 +9,7 @@ constructor(props){
     super(props)
 
     this.state = {
-        user: {email: null, registration: false}
+        user: {email: null, registration: false, login: false}
     }
 }
 
@@ -25,6 +25,7 @@ signOut = () => {
 
 componentWillReceiveProps(nextProps){
     const user = JSON.parse(localStorage.getItem("user"))
+    console.log(user)
     this.setState({ user })
 }
 render(){
@@ -40,12 +41,20 @@ render(){
                 </div>
                 <div>
                     <ul>
-                        {auth.success || this.state.user && this.state.user.registration ?
+                        {
+                            auth.success || this.state.user && this.state.user.registration ?
+                            
                             <li><NavLink to="/" onClick={this.signOut}>Sign Out</NavLink></li>
                             : 
                             <li><NavLink to="/administration/register" activeClassName="selected">Create Account</NavLink></li>
                         }
-                        <li><NavLink to="/administration/login" activeClassName="selected">Log In</NavLink></li>
+                        {
+                            this.state.user && this.state.user.login ?
+                            
+                            <li><NavLink to="/" >{this.state.user.email}</NavLink></li>                          
+                            :
+                            <li><NavLink to="/administration/login" activeClassName="selected">Log In</NavLink></li>
+                        }
                     </ul>
                 </div>
             </nav>    

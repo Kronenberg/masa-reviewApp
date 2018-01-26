@@ -28,9 +28,9 @@ export const authListener = () => (dispatch, getState, getFirebase) => {
     firebase.auth().onAuthStateChanged(function (user) {
         if(user && !user.emailVerified){
             user.sendEmailVerification().then(function () {
-                dispatch({ type: EMAIL_VERIFIED_SENDED, payload: user });
+               // dispatch({ payload: user });
             }).catch(function (error) {
-                dispatch({ type: EMAIL_VERIFIED_ERROR, payload: error });
+                //dispatch({ payload: error });
             });
         }
     });

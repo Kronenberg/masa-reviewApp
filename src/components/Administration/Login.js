@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Administration from './components/Administration';
 import { connect } from 'react-redux';
 import { loginViaFirebase } from '../../actions/auth';
+import { withRouter } from 'react-router-dom';
 
 
 
@@ -22,4 +23,4 @@ class Register extends Component {
     }
 }
 
-export default connect(null, { loginViaFirebase })(Register)
+export default connect(null, { loginViaFirebase })(withRouter(Register))

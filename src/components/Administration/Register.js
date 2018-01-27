@@ -24,7 +24,7 @@ class Register extends Component{
     
     }
     componentWillReceiveProps = (nextProps) => {
-        const { auth, rejected } = nextProps;
+        const { auth, rejected, emailSended } = nextProps;
 
         if (auth.success && !rejected) {
             this.props.history.push('/administration/login')

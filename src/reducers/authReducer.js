@@ -1,4 +1,5 @@
 import * as TYPES from '../ActionsTYPES/TYPES';
+import { EMAIL_SENDED } from '../ActionsTYPES/TYPES';
 
 const initialState = {
     pending: false,
@@ -7,6 +8,7 @@ const initialState = {
     userData: null,
     error: null,
     login: false,
+    emailSended: false,
     emailVerified: false
 }
 
@@ -41,17 +43,7 @@ function authReducer(state = initialState, action) {
                 error: action.payload
             }
         }
-        case TYPES.CREATE_ACCOUNT_TO_INITIAL: {
-           
-            return {
-                ...state,
-                pending: false,
-                success: false,
-                rejected: false,
-                userData: null,
-                error: true
-            }
-        }
+       
         case TYPES.LOGIN_ACCOUNT_PENDING: {
             return {
                 ...state,
@@ -76,6 +68,19 @@ function authReducer(state = initialState, action) {
                 error: action.payload
             }
         }
+        case TYPES.EMAIL_SENDED: {
+            return {
+                ...state,
+                emailSended: true
+            }
+        }
+        case TYPES.EMAIL_DISPATCH_ERROR: {
+            return {
+                ...state,
+                emailSended: false,
+                error: action.payload
+            }
+        }
 
         case TYPES.EMAIL_VERIFIED_SUCCESS: {
             return {
@@ -92,7 +97,19 @@ function authReducer(state = initialState, action) {
             }
         }
 
+        case TYPES.CREATE_ACCOUNT_TO_INITIAL: {
 
+            return {
+                ...state,
+                pending: false,
+                success: false,
+                rejected: false,
+                userData: null,
+                emailSended: false,
+                emailVerified: false,
+                error: true
+            }
+        }
 
         case TYPES.CREATE_ACCOUNT_TO_INITIAL_ERROR: {
 

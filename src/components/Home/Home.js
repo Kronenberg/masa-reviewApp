@@ -16,14 +16,11 @@ class Home extends Component {
   componentWillMount() {
     this.props.getAllGroups();
   }
-
-  render(){
-    //console.log(this.props.groupStatus);
-    var groups = [];
-    if(this.props.groupStatus && this.props.groupStatus.groups) {   
-      _.mapValues(this.props.groupStatus.groups, (item) => {
-        groups.push(
-          <Group 
+  renderGroups = () => {
+    if (this.props.groupStatus && this.props.groupStatus.groups) {
+      return this.props.groupStatus.groups.map((item) => {
+        return (
+          <Group
             key={item.index}
             title={item.nameUS}
             index={item.index}
@@ -33,10 +30,14 @@ class Home extends Component {
       })
 
     }
+  }
+  render(){
+    //console.log(this.props.groupStatus);
+    
     return(
       <div style={{padding: '20px'}}>
         <div className="cards">
-            {this.props.groupStatus.pending ? 'Loading' : groups }
+            {this.props.groupStatus.pending ? 'Loading' : this.renderGroups() }
         </div>
       </div>
     );

@@ -1,11 +1,11 @@
-import { SAVE_POST, FETCH_POSTS, EMAIL_VERIFIED_SENDED, EMAIL_VERIFIED_ERROR } from '../ActionsTYPES/TYPES'
+import { SAVE_POST, FETCH_POSTS, EMAIL_SENDED, EMAIL_DISPATCH_ERROR } from '../ActionsTYPES/TYPES'
 
 
 export const savePost = (post) =>
     (dispatch, getState, getFirebase) => {
         const firebase = getFirebase()
-        firebase.database().ref(`groups/${post.groupTitle}/posts/${post.postIndex}`)
-            .set(post)
+        firebase.database().ref(`groups/${post.groupTitle}/posts`)
+            .push(post)
             .then(() => {
                 dispatch({ type: SAVE_POST, payload: 'Success' })
             })
@@ -27,10 +27,11 @@ export const authListener = () => (dispatch, getState, getFirebase) => {
     const firebase = getFirebase()
     firebase.auth().onAuthStateChanged(function (user) {
         if(user && !user.emailVerified){
-            user.sendEmailVerification().then(function () {
-               // dispatch({ payload: user });
+            user.sendEmailVerification()
+            .then(function () {
+                dispatch({ type:EMAIL_SENDED });
             }).catch(function (error) {
-                //dispatch({ payload: error });
+                dispatch({ type:EMAIL_DISPATCH_ERROR, payload: error });
             });
         }
     });

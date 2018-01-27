@@ -23,12 +23,12 @@ class Login extends Component {
         const { auth } = nextProps;
 
         this.setState({
-            emailVerified: nextProps.auth.emailVerified,
-            error: nextProps.auth.error,
+            emailVerified: auth.emailVerified,
+            error: auth.error,
             user
         })
 
-        if (auth.emailVerified) {
+        if (!auth.error && auth.emailVerified) {
             this.props.history.push('/')
         } else if (auth.error) {
             this.setState({ error: auth.error })

@@ -49,7 +49,7 @@ function authReducer(state = initialState, action) {
                 success: false,
                 rejected: false,
                 userData: null,
-                error: null
+                error: true
             }
         }
         case TYPES.LOGIN_ACCOUNT_PENDING: {

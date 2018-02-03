@@ -14,8 +14,7 @@ const rootRecuer =  combineReducers({
   groupReducer: groupReducer,
   postsReducer: postsReducer,
   firebase: firebaseReducer,
-  authReducer: authReducer,
-  form: reduxFormReducer
+  authReducer: authReducer
 });
 
 export default rootRecuer;

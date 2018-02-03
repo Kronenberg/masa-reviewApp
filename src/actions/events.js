@@ -23,18 +23,3 @@ export const fetchPosts = () => (dispatch, getState, getFirebase) => {
     });
 };
 
-export const authListener = () => (dispatch, getState, getFirebase) => {
-    const firebase = getFirebase()
-    firebase.auth().onAuthStateChanged(function (user) {
-        if(user && !user.emailVerified){
-            user.sendEmailVerification()
-            .then(function () {
-                dispatch({ type:EMAIL_SENDED });
-            }).catch(function (error) {
-                dispatch({ type:EMAIL_DISPATCH_ERROR, payload: error });
-            });
-        }
-    });
-}
-
-

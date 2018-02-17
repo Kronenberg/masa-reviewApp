@@ -1,0 +1,38 @@
+.DraftEditor-root {
+  min-height: 75%;
+  margin-bottom: 10px; }
+  .DraftEditor-root .DraftEditor-editorContainer {
+    border: 0.5px solid #ddd;
+    margin: 5px;
+    padding: 10px;
+    border-radius: 1px;
+    box-shadow: inset 0px 1px 8px -3px;
+    background: #FEFEFE;
+    min-height: 50vh; }
+    .DraftEditor-root .DraftEditor-editorContainer .public-DraftEditor-content {
+      min-height: inherit; }
+.dashboard_buttons{
+    margin: 5px;
+    padding: 10px;
+    border-radius: 5%;
+    box-shadow: 0px 1px 8px -3px rgb(187, 181, 181);
+    color: black;
+    font-weight: 400;
+    font-size: 14px;
+    background: rgb(255, 255, 255);
+    border: 0.5px solid #bbb;
+}
+.dashboard_buttons.save{
+    color: white;
+    background: rgb(52, 9, 121);
+}
+
+.dashboard_buttons.cancel{
+    color: black;
+    background: rgb(253, 253, 253);
+}
+
+.dashboard_buttons:hover{
+    box-shadow: 0px 1px 8px 1px rgb(187, 181, 181);
+ }
+

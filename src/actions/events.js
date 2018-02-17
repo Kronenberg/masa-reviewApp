@@ -14,9 +14,9 @@ export const savePost = (post) =>
             })
     }
 
-export const fetchPosts = () => (dispatch, getState, getFirebase) => {
+export const fetchPosts = (groupTitle) => (dispatch, getState, getFirebase) => {
     const firebase = getFirebase()
-    const posts = firebase.database().ref('groups/')
+    const posts = firebase.database().ref(`groups/${groupTitle}/posts`)
 
     posts.on('value', function (snapshot) {
         dispatch({ type: FETCH_POSTS, payload: snapshot.val() || [] })

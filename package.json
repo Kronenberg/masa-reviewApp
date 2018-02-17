@@ -17,6 +17,7 @@
     "draft-js-static-toolbar-plugin": "^2.0.1",
     "firebase": "^4.8.2",
     "firebase-admin": "^5.8.2",
+    "firebase-tools": "^3.17.4",
     "lodash": "^4.17.4",
     "node-sass": "^4.7.2",
     "node-sass-chokidar": "0.0.3",

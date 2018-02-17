@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { createAccountToInitial } from '../../actions/auth'
+import { createAccountToInitial, verifyLogin } from '../../actions/auth'
 import { NavLink } from 'react-router-dom';
+
 
 class Header extends Component{
 
@@ -9,14 +10,17 @@ constructor(props){
     super(props)
 
     this.state = {
-        user: {email: null, registration: false, login: false}
+       email: null, 
+       registration: false, 
+       login: false
     }
 }
 
 componentWillMount(){
-    const user = JSON.parse(localStorage.getItem("user"))
-
-    this.setState({ user })
+    //const user = JSON.parse(localStorage.getItem("user"))
+   
+    //this.setState({ user })
+    this.props.verifyLogin(JSON.parse(localStorage.getItem("userToken")));
 }
 signOut = () => {
 
@@ -24,9 +28,10 @@ signOut = () => {
 }
 
 componentWillReceiveProps(nextProps){
-    const user = JSON.parse(localStorage.getItem("user"))
-    console.log(user)
-    this.setState({ user })
+     console.log(nextProps)
+     const { auth } = nextProps
+
+    this.setState({ email: auth.userEmail, registration: auth.success, login: auth.login })
 }
 render(){
     const { auth } = this.props;
@@ -42,16 +47,16 @@ render(){
                 <div>
                     <ul>
                         {
-                            auth.success || this.state.user && this.state.user.registration ?
+                            auth.success || this.state.registration ?
                             
                             <li><NavLink to="/" onClick={this.signOut}>Sign Out</NavLink></li>
                             : 
                             <li><NavLink to="/administration/register" activeClassName="selected">Create Account</NavLink></li>
                         }
                         {
-                            this.state.user && this.state.user.login ?
+                            this.state.email && this.state.login ?
                             
-                            <li><NavLink to="/" >{this.state.user.email}</NavLink></li>                          
+                            <li><NavLink to="/" >{this.state.email}</NavLink></li>                          
                             :
                             <li><NavLink to="/administration/login" activeClassName="selected">Log In</NavLink></li>
                         }
@@ -68,4 +73,4 @@ const mapStateToProps = (state) => {
         auth: state.authReducer
     }
 }
-export default connect(mapStateToProps, { createAccountToInitial })(Header);
+export default connect(mapStateToProps, { createAccountToInitial, verifyLogin })(Header);

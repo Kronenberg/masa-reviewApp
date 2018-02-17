@@ -9,7 +9,8 @@ const initialState = {
     error: null,
     login: false,
     emailSended: false,
-    emailVerified: false
+    emailVerified: false,
+    userEmail: null
 }
 
 function authReducer(state = initialState, action) {
@@ -86,7 +87,8 @@ function authReducer(state = initialState, action) {
             return {
                 ...state,
                 emailVerified: true,
-                error: false
+                error: false,
+                userEmail: action.payload
             }
         }
 
@@ -107,7 +109,8 @@ function authReducer(state = initialState, action) {
                 userData: null,
                 emailSended: false,
                 emailVerified: false,
-                error: true
+                error: true,
+                userEmail: null
             }
         }
 
@@ -118,7 +121,16 @@ function authReducer(state = initialState, action) {
                 error: action.payload
             }
         }
+        case TYPES.AUTO_LOGIN_USER: {
 
+            return {
+                ...state,
+                success: true,
+                login: true,
+                emailVerified: true,
+                userEmail: action.payload
+            }
+        }
         default: {
             return state;
         }

@@ -11,21 +11,18 @@ class Login extends Component {
         super(props)
         this.state = {
             emailVerified: false,
-            user: { email: null, registration: false, login: false }
+            register: false
         } 
     }
-    componentWillMount(){
-        const user = JSON.parse(localStorage.getItem("user"))
-        this.setState({ user })
-    }
+    
     componentWillReceiveProps(nextProps) {
-        const user = JSON.parse(localStorage.getItem("user"))
+
         const { auth } = nextProps;
 
         this.setState({
             emailVerified: auth.emailVerified,
             error: auth.error,
-            user
+            register: auth.success
         })
 
         if (!auth.error && auth.emailVerified) {
@@ -49,7 +46,7 @@ class Login extends Component {
                     this.state.error ? 
                         
                         <p style={{color: 'red'}}>{this.state.error}</p> :
-                        !this.state.emailVerified && this.state.user && !this.state.user.login ? 
+                        !this.state.emailVerified && this.state.register ? 
                         
                         <p>Verify your email address</p> : null
                 }

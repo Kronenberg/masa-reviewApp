@@ -8,10 +8,12 @@ import {
     LOGIN_ACCOUNT_REJECTED,
     LOGIN_ACCOUNT_SUCCESS,
     EMAIL_VERIFIED_SUCCESS,
-    EMAIL_VERIFIED_FAIL
+    EMAIL_VERIFIED_FAIL,
+    AUTO_LOGIN_USER
 
 } from '../ActionsTYPES/TYPES';
 import { createFirebaseConnect } from 'react-redux-firebase';
+import uuidv1 from 'uuid/v1';
 
 export const createAccount = (email, password) =>
   (dispatch, getState, getFirebase) => {
@@ -22,7 +24,8 @@ export const createAccount = (email, password) =>
     firebase.auth().createUserWithEmailAndPassword(email, password)
       .then((userData) => {
        
-        localStorage.setItem("user", JSON.stringify({ email, "registration": true, "login": false }))
+        console.log(userData)
+        //localStorage.setItem("user", JSON.stringify({ email, "registration": true, "login": false }))
         dispatch({ type: CREATE_ACCOUNT_SUCCESS, payload: userData });
     })
       .catch((error) => {
@@ -44,7 +47,8 @@ export const loginViaFirebase = (email, password) =>
     .then((userData)=>{
       
       // add this user to local storage
-      localStorage.setItem("user", JSON.stringify({ email, "registration": true, "login": false }))
+    
+      //localStorage.setItem("user", JSON.stringify({ email, "registration": true, "login": false }))
       dispatch({ type: LOGIN_ACCOUNT_SUCCESS, payload: userData})
       
     })
@@ -52,12 +56,20 @@ export const loginViaFirebase = (email, password) =>
     .then(() => {
       if (firebase.auth().currentUser.emailVerified) {
 
-        localStorage.setItem("user", JSON.stringify({ email, "registration": true, "login": true }))
-        dispatch({type: EMAIL_VERIFIED_SUCCESS});
-
+        firebase.auth().currentUser.getIdToken(/* forceRefresh */ true).then(function (idToken) {
+          const userRoute = email.split('@')[0]
+          firebase.database().ref(`users/${userRoute}`)
+            .set({email, token: idToken})
+            .then(()=>{
+              localStorage.setItem("userToken", JSON.stringify({ token: idToken, userRoute }))
+            })
+            .then(()=>{
+              dispatch({type: EMAIL_VERIFIED_SUCCESS, payload: email});
+            })
+        })
       } else {
 
-        localStorage.setItem("user", JSON.stringify({ email, "registration": true, "login": false }))
+
         dispatch({type: EMAIL_VERIFIED_FAIL});
 
       }
@@ -78,7 +90,7 @@ export const createAccountToInitial = () =>
     firebase.auth().signOut()
 
       .then(function() {
-        localStorage.removeItem("user")
+        localStorage.removeItem("userToken")
         dispatch({ type: CREATE_ACCOUNT_TO_INITIAL });
       })
       .catch(function(error) {
@@ -86,7 +98,29 @@ export const createAccountToInitial = () =>
       });
 }
 
+export const verifyLogin = (userToken) =>
+  (dispatch, getState, getFirebase) => {
+    const firebase = getFirebase();
 
+    const users = firebase.database().ref('users/')
+    users.once('value', function(snapshot) {
+      if(userToken){
+        const userData = snapshot.val()[userToken.userRoute];
+        if (userToken.token === userData.token){
+          dispatch({ type: AUTO_LOGIN_USER, payload: userData.email})
+
+          const email = userData.email;
+          const userRoute = email.split('@')[0]
+          const token = uuidv1();
+
+          firebase.database().ref(`users/${userRoute}`)
+            .set({ email, token })
+          localStorage.setItem("userToken", JSON.stringify({ token, userRoute }))
+
+        }               
+      }
+    });
+  }
 
 export default {
     createAccount,

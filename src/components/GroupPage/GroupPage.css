@@ -14,35 +14,24 @@
 .DraftEditor-root .DraftEditor-editorContainer .public-DraftEditor-content {
   min-height: inherit; }
 
-.draftJsToolbar__toolbar__dNtBH {
-  display:flex;
-}
+.dashboard_buttons {
+  margin: 5px;
+  padding: 10px;
+  border-radius: 5%;
+  box-shadow: 0px 1px 8px -3px #bbb5b5;
+  color: black;
+  font-weight: 400;
+  font-size: 14px;
+  background: white;
+  border: 0.5px solid #bbb; }
 
-.draftJsToolbar__toolbar__dNtBH div{
-  display:flex;
-}
-
-.draftJsToolbar__button__qi1gf{
-    margin: 5px;
-    padding: 10px;
-    border-radius: 5%;
-    box-shadow: 0px 1px 8px -3px rgb(187, 181, 181);
-    color: black;
-    font-weight: 400;
-    font-size: 14px;
-    background: rgb(255, 255, 255);
-    border: 0.5px solid #bbb;
-}
-
-
-.draftJsToolbar__button__qi1gf.save {
+.dashboard_buttons.save {
   color: white;
   background: #340979; }
 
-.draftJsToolbar__button__qi1gf.cancel {
+.dashboard_buttons.cancel {
   color: black;
   background: #fdfdfd; }
 
-.draftJsToolbar__button__qi1gf:hover {
+.dashboard_buttons:hover {
   box-shadow: 0px 1px 8px 1px #bbb5b5; }
-

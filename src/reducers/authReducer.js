@@ -20,7 +20,7 @@ function authReducer(state = initialState, action) {
                 pending: true
             }
         }
-        case TYPES.CREATE_ACCOUT_SUCCESS: {
+        case TYPES.CREATE_ACCOUNT_SUCCESS: {
             return {
                 ...state,
                 pending: false,

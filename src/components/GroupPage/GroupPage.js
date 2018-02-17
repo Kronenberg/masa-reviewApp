@@ -9,7 +9,9 @@ import './GroupPage.css';
 
 class GroupPage extends Component {
     state = {
-        renderPosts: false
+        renderPosts: false,
+        posts: [],
+        postsElements: []
     }
 
     componentWillMount(){
@@ -18,33 +20,51 @@ class GroupPage extends Component {
     }
     componentWillReceiveProps(nextProps){
         const { posts } = nextProps;
-        if(posts.length > 0){
-            this.setState({renderPosts: true})
+       
+        this.setState({posts: [...posts]})
+    
+    }
+    shouldComponentUpdate(nextProps, nextState){
+        if(nextState.posts !== this.state.posts){
+            
+            this.renderPosts(nextState.posts)
         }
-    }
-    renderProps(){
-        const { posts } = this.props
-        if(posts){
-            return posts.map((post)=>{
-               console.log(post)
-               return <Post groupTitle = {post.groupTitle}
-                            user={post.user}
-                            content={post.content}/>
-            })
-        } 
-    }
-    render() {
 
+        if(nextState.postsElements !== this.state.postsElements){
+            return true
+        }
+        return false
+    }
+
+    renderPosts(posts){
+        const postsElements = posts.map((post, i) => {
+            return (
+                <Post groupTitle={post.groupTitle}
+                      user={post.user}
+                      postId={post.postId}
+                      content={post.content}
+                      key={i} />
+            )
+        })
+
+
+        this.setState({ postsElements })
+    }
+    
+    render() {
+        console.log(this.state.postsElements)
         return (
             <div style={{ padding: '50px' }}>
                 <CreatePostModal groupTitle={this.props.match.params.groupTitle}/>
-                {this.state.renderPosts ? this.renderProps() : null}
+                {this.state.postsElements.reverse()}
             </div>
         );
     }
 }
 
 const mapStateToProps = ({ postsReducer }) => {
+  
+    
     return {
         posts: postsReducer
     }

@@ -3,26 +3,23 @@ import { connect } from 'react-redux';
 import { savePost } from '../../../actions/events';
 
 import ReactModal from 'react-modal';
+
 import { EditorState, RichUtils, convertFromRaw } from 'draft-js';
+
 import Editor, { createEditorStateWithText } from 'draft-js-plugins-editor';
-import createImagePlugin from 'draft-js-image-plugin';
 
 import createToolbarPlugin, { Separator } from 'draft-js-static-toolbar-plugin';
 
+import createImagePlugin from 'draft-js-image-plugin';
+
+import ImageAdd from './ImageAdd/index';
 
 import { stateToHTML } from 'draft-js-export-html';
 
-
 import Toolbar, { pluginsToolBar } from './ToolbarPlugin'
 
-
-
 const imagePlugin = createImagePlugin();
-
 const plugins = [...pluginsToolBar, imagePlugin] 
-
-const text = 'Click on the + button below and insert "/images/canada-landscape-small.jpg" to add the landscape image. Alternativly you can use any image url on the web.';
-
 
 class CreatePostModal extends React.Component {
     constructor() {
@@ -46,6 +43,7 @@ class CreatePostModal extends React.Component {
         this.setState({ showModal: false });
         
         const contentState = editorState.getCurrentContent()
+        console.log(stateToHTML(contentState));
 
         this.props.savePost({ content: stateToHTML(contentState), groupTitle, user } )
     }
@@ -53,7 +51,7 @@ class CreatePostModal extends React.Component {
         this.setState({ showModal: false });
     }
     onChange = (editorState) => {
-        
+
         this.setState({ editorState });
     }
 
@@ -62,10 +60,8 @@ class CreatePostModal extends React.Component {
     }
 
     handleKeyCommand = (command, editorState) => {
-        console.log(command)
         const newState = RichUtils.handleKeyCommand(editorState, command);
         if (newState) {
-            console.log(newState, 'handled')
             this.onChange(newState);
             return 'handled';
         }
@@ -83,21 +79,28 @@ class CreatePostModal extends React.Component {
                     isOpen={this.state.showModal}
                     contentLabel="Create Post Modal"
                     style={{
-                        content: {
-                                background: 'rgba(255, 255, 255, 0.8)'
-                            },
-                        minHeight: '100%',
-                        overflow: 'hidden'
+                            content: {
+                                    background: 'rgba(255, 255, 255, 0.8)'
+                                },
+                            minHeight: '100%',
+                            overflow: 'hidden'
                         }}>  
                         <div className="editor">
-                            <Toolbar className="headlineButtonWrapper"/>
                             <Editor 
                                 editorState={this.state.editorState} 
                                 handleKeyCommand={this.handleKeyCommand}
                                 onChange={this.onChange}
                                 plugins={plugins}
-                                ref={(element) => { this.editor = element; }}
+                                ref={(element) => { this.pluginEditor = element; }}
                                 />
+                            <div style={{display: 'flex'}}>
+                                <Toolbar className="headlineButtonWrapper"/>
+                                <ImageAdd
+                                    editorState={this.state.editorState}
+                                    onChange={this.onChange}
+                                    modifier={imagePlugin.addImage}
+                                />
+                            </div>
                         </div>
                         <div style={{ display: 'flex'}}>
                             <button className="draftJsToolbar__button__qi1gf save" onClick={this.handleCloseModalAndSave}>Опубликовать</button>

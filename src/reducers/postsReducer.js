@@ -3,7 +3,7 @@ import {
 
 } from '../ActionsTYPES/TYPES';
 
-const initialState = {}
+const initialState = []
 
 
 function postsReducer(state = initialState, action) {
@@ -16,6 +16,7 @@ function postsReducer(state = initialState, action) {
             } else {
                 for (var key in action.payload) {
                     if (action.payload.hasOwnProperty(key)) {
+                        action.payload[key].postId = key
                         postsList.push(action.payload[key])
                     }
                 }

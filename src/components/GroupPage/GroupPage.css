@@ -24,7 +24,7 @@
   margin: 5px;
   padding: 10px;
   border-radius: 5%;
-  box-shadow: 0px 1px 8px -3px #bbb5b5;
+  box-shadow: 0px 1px 8px -3px #361515;
   color: black;
   font-weight: 400;
   font-size: 14px;
@@ -41,3 +41,29 @@
 
 .draftJsToolbar__button__qi1gf:hover {
   box-shadow: 0px 1px 8px 1px #bbb5b5; }
+
+.image_add {
+  height: 50px; }
+
+.image_add_input {
+  height: 30px; }
+
+figure {
+  width: 100%;
+  margin: 0; }
+  figure .draftJsEmojiPlugin__image__192TI {
+    width: inherit; }
+
+.post_content {
+  width: 100%; }
+
+img {
+  width: 100%; }
+
+.user_login {
+  display: flex;
+  justify-content: flex-end;
+  text-align: end;
+  font-size: 10px;
+  font-weight: 500;
+  color: rgb(99, 97, 97) }

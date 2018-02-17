@@ -1,0 +1,27 @@
+#sidebar {
+    height: 100vh;
+    width: 20%;
+    min-width: 150px;
+    background-color: rgb(2, 2, 29);
+    overflow: hidden;
+
+    li {
+        list-style: none;
+    }
+}
+
+#sidebar-wrapper{
+    width: 80%;
+    margin: auto;
+}
+
+.search-fild {
+    text-align: center;
+    margin: 3vh auto 7vh;
+    input {
+        width: 100%;
+        height: 20px;
+        border: 1px solid #000;
+        border-radius: 5px;
+    }
+}

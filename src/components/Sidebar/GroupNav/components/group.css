@@ -1,0 +1,10 @@
+.group-list a {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 5vh;
+  color: #fff;
+  text-decoration: none; }
+
+.group-list:hover {
+  background-color: rgba(178, 178, 184, 0.349); }

@@ -20,7 +20,7 @@ class GroupPage extends Component {
     }
     componentWillReceiveProps(nextProps){
         const { posts } = nextProps;
-       
+
         this.setState({posts: [...posts]})
     
     }
@@ -33,7 +33,7 @@ class GroupPage extends Component {
         if(nextState.postsElements !== this.state.postsElements){
             return true
         }
-        return false
+        return true
     }
 
     renderPosts(posts){
@@ -52,7 +52,6 @@ class GroupPage extends Component {
     }
     
     render() {
-        console.log(this.state.postsElements)
         return (
             <div style={{ padding: '50px' }}>
                 <CreatePostModal groupTitle={this.props.match.params.groupTitle}/>
@@ -64,7 +63,7 @@ class GroupPage extends Component {
 
 const mapStateToProps = ({ postsReducer }) => {
   
-    
+    //console.log(postsReducer)  
     return {
         posts: postsReducer
     }

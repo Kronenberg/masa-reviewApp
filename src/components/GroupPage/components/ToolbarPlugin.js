@@ -11,8 +11,7 @@ import {
     HeadlineThreeButton,
     UnorderedListButton,
     OrderedListButton,
-    BlockquoteButton,
-    CodeBlockButton,
+    BlockquoteButton
 } from 'draft-js-buttons';
 
 
@@ -26,13 +25,24 @@ class HeadlinesPicker extends Component {
         window.removeEventListener('click', this.onWindowClick);
     }
 
-    onWindowClick = () =>
+    onWindowClick = () => {
         // Call `onOverrideContent` again with `undefined`
         // so the toolbar can show its regular content again.
         this.props.onOverrideContent(undefined);
-
+    }
+    
+   
     render() {
-        const buttons = [HeadlineOneButton, HeadlineTwoButton, HeadlineThreeButton];
+        const buttons = [ItalicButton,
+            BoldButton,
+            UnderlineButton,
+            CodeButton,
+            HeadlineOneButton,
+            HeadlineTwoButton,
+            HeadlineThreeButton,
+            UnorderedListButton,
+            OrderedListButton,
+            BlockquoteButton];
         return (
             <div>
                 {buttons.map((Button, i) => // eslint-disable-next-line
@@ -44,12 +54,12 @@ class HeadlinesPicker extends Component {
 }
 
 class HeadlinesButton extends Component {
-    onClick = () =>
+    onClick = () => {
         // A button can call `onOverrideContent` to replace the content
         // of the toolbar. This can be useful for displaying sub
         // menus or requesting additional information from the user.
         this.props.onOverrideContent(HeadlinesPicker);
-
+    }
     render() {
         return (
             <div className="draftJsToolbar__buttonWrapper___1Dmqh">
@@ -64,16 +74,9 @@ class HeadlinesButton extends Component {
 
 const toolbarPlugin = createToolbarPlugin({
     structure: [
-        BoldButton,
-        ItalicButton,
-        UnderlineButton,
-        CodeButton,
-        Separator,
-        HeadlinesButton,
-        UnorderedListButton,
-        OrderedListButton,
-        BlockquoteButton,
-        CodeBlockButton
+
+        HeadlinesPicker,
+
     ]
 });
 const { Toolbar } = toolbarPlugin;

@@ -17,14 +17,17 @@ class Post extends Component{
             this.setState({ content });
         }
     }
+    componentWillReceiveProps(nextProps){
+
+        this.setState({ content: nextProps.content });
+    }
     deletePost = () => {
         const confirm = window.confirm("Точно удалить?")
         if(confirm){
-            this.props.deletePost(this.props.postId, this.props.groupTitle, this.props.userEmail)
+            this.props.deletePost(this.props.postId, this.props.groupTitle, this.props.user)
         }
     }
     render(){
-
         return(
             <div style={{ boxShadow: '1px 1px 1px 1px rgb(187, 181, 181)', padding: '10px', margin: '10px', borderRadius: '2px'}}>
                 <div className="delete_post">

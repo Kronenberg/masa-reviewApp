@@ -19,9 +19,9 @@ export const deletePost = (postId, groupTitle, userEmail) =>
         const firebase = getFirebase()
 
         const user = firebase.auth().currentUser;
-
+        console.log(user.email, userEmail, postId)
         if (user && user.email === userEmail){
-            firebase.database().ref(`groups/${groupTitle}/posts/${postId}`)
+            firebase.database().ref(`groups/${groupTitle}/posts/${postId}/`)
                 .remove()
                 .then(() => {
                     dispatch({ type: DELETE_POST, payload: 'Success' })
@@ -45,4 +45,19 @@ export const fetchPosts = (groupTitle) => (dispatch, getState, getFirebase) => {
         dispatch({ type: FETCH_POSTS, payload: snapshot.val() || [] })
     });
 };
+
+export const authListener = () => (dispatch, getState, getFirebase) => {
+    const firebase = getFirebase()
+    firebase.auth().onAuthStateChanged(function (user) {
+        if (user && !user.emailVerified) {
+            user.sendEmailVerification()
+                .then(function () {
+                    dispatch({ type: EMAIL_SENDED });
+                }).catch(function (error) {
+                    dispatch({ type: EMAIL_DISPATCH_ERROR, payload: error });
+                });
+        }
+    });
+}
+
 

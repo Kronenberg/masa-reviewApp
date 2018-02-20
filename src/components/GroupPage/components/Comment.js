@@ -44,7 +44,7 @@ class Post extends Component {
                         <button
                             className="draftJsToolbar__button__qi1gf delete"
                             onClick={this.deletePost}
-                            style={{ display: this.props.userEmail === this.props.user ? 'block' : 'none' }}>
+                            style={{ display: this.props.userEmail === this.props.post.user ? 'block' : 'none' }}>
 
                             Удалить
                         </button>

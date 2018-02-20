@@ -1,4 +1,4 @@
-import { SAVE_POST, DELETE_POST, FETCH_POSTS, EMAIL_SENDED, EMAIL_DISPATCH_ERROR } from '../ActionsTYPES/TYPES'
+import { SAVE_POST, SAVE_COMMENT, DELETE_POST, FETCH_POSTS, FETCH_POST, EMAIL_SENDED, EMAIL_DISPATCH_ERROR } from '../ActionsTYPES/TYPES'
 
 
 export const savePost = (post) =>
@@ -11,6 +11,20 @@ export const savePost = (post) =>
             })
             .catch((err) => {
                 dispatch({ type: SAVE_POST, payload: err })
+            })
+    }
+
+export const saveComment = (post) =>
+    (dispatch, getState, getFirebase) => {
+        console.log(post)
+        const firebase = getFirebase()
+        firebase.database().ref(`groups/${post.groupTitle}/posts/${post.id}/comments`)
+            .push(post)
+            .then(() => {
+                dispatch({ type: SAVE_COMMENT, payload: 'Success' })
+            })
+            .catch((err) => {
+                dispatch({ type: SAVE_COMMENT, payload: err })
             })
     }
 
@@ -45,6 +59,18 @@ export const fetchPosts = (groupTitle) => (dispatch, getState, getFirebase) => {
         dispatch({ type: FETCH_POSTS, payload: snapshot.val() || [] })
     });
 };
+
+export const fetchPost = (content) => (dispatch, getState, getFirebase) => {
+
+    const firebase = getFirebase()
+    const posts = firebase.database().ref(`groups/${content.groupTitle}/posts`)
+
+    posts.on('value', function (snapshot) {
+
+        dispatch({ type: FETCH_POST, payload: snapshot.val()[content.post] || [] })
+    });
+};
+
 
 export const authListener = () => (dispatch, getState, getFirebase) => {
     const firebase = getFirebase()

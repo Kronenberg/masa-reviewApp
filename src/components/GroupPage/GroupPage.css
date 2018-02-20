@@ -1,15 +1,14 @@
 .DraftEditor-root {
-  min-height: 75%;
+  min-height: 50%;
   margin-bottom: 10px; }
 
 .DraftEditor-root .DraftEditor-editorContainer {
   border: 0.5px solid #ddd;
-  margin: 5px;
   padding: 10px;
   border-radius: 1px;
   box-shadow: inset 0px 1px 8px -3px;
   background: #FEFEFE;
-  min-height: 50vh; }
+  min-height: 35vh; }
 
 .DraftEditor-root .DraftEditor-editorContainer .public-DraftEditor-content {
   min-height: inherit; }
@@ -39,6 +38,10 @@
   color: black;
   background: #fdfdfd; }
 
+.comment_button {
+  margin-bottom: 1%;
+  margin-left: 5%; }
+
 .delete_post {
   display: flex;
   justify-content: flex-end; }
@@ -50,7 +53,7 @@
   box-shadow: 0px 1px 8px 1px #bbb5b5; }
 
 .draftJsToolbar__active__3qcpF {
-  background: #f5f5f5; }
+  background: #c9c3c3; }
 
 .image_add {
   height: 50px; }
@@ -58,16 +61,40 @@
 .image_add_input {
   height: 30px; }
 
+.post_wrapper {
+  padding: 3% 7% 0 7%;
+  background-color: #f7f8f2; }
+
+.post_panel {
+  border-radius: 3%;
+  background: #FEFEFE; }
+
 .post_content {
   max-width: 100%;
   padding: 20px; }
 
+.comment_panel {
+  position: relative;
+  z-index: 1;
+  background: #FEFEFE;
+  margin: 0 1%;
+  border: 0.5px solid #888484;
+  border-radius: 2px;
+  box-shadow: 1px 1px 1px 1px #bbb5b5;
+  padding: 10px;
+  transition: width 0.2s ease-in-out, margin 0.2s ease-in-out, box-shadow 0.2s ease-in-out; }
+
+.comment_panel.active {
+  width: 100%;
+  margin: 1% -0.5%;
+  box-shadow: 1px 1px 20px #bbb5b5; }
+
+.comment_panel:hover {
+  background: #f7f3f3;
+  box-shadow: 2px 2px 4px 1px #bbb5b5; }
+
 .draftJsEmojiPlugin__emojiSelect__34S1B {
   margin: 10px; }
-
-.draftJsEmojiPlugin__emojiSelectPopover__1J1s0 {
-  top: 0;
-  right: 0; }
 
 figure {
   margin: 0; }

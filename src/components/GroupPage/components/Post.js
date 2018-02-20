@@ -3,6 +3,7 @@ import { EditorState, convertFromHTML } from 'draft-js';
 import ReactHtmlParser from 'react-html-parser';
 import { connect } from 'react-redux';
 import { deletePost } from '../../../actions/events';
+import { NavLink } from 'react-router-dom';
 
 class Post extends Component{
     state = {
@@ -29,7 +30,8 @@ class Post extends Component{
     }
     render(){
         return(
-            <div style={{ boxShadow: '1px 1px 1px 1px rgb(187, 181, 181)', padding: '10px', margin: '10px', borderRadius: '2px'}}>
+            <div className="post_panel" 
+                 style={{ boxShadow: '1px 1px 1px 1px rgb(187, 181, 181)', padding: '10px', margin: '10px', borderRadius: '2px'}}>
                 <div className="delete_post">
                     <button 
                         className="draftJsToolbar__button__qi1gf delete"
@@ -41,6 +43,18 @@ class Post extends Component{
                 </div>
                 <div className="post_content">
                     {ReactHtmlParser(this.state.content)}
+                </div>
+                <div className="comments">
+                    <p>
+                       {
+                        this.props.comments ? 
+                            null : 
+                            <NavLink to={`/${this.props.groupTitle}/${this.props.postId}`} 
+                                     activeClassName="selected" >
+                                     комментарии
+                            </NavLink>
+                       }
+                    </p>
                 </div>
                 <div className="user_login">
                     <p>

@@ -1,6 +1,6 @@
 import {
     FETCH_POSTS,
-
+    FETCH_POST
 } from '../ActionsTYPES/TYPES';
 
 const initialState = []
@@ -22,6 +22,11 @@ function postsReducer(state = initialState, action) {
                 }
             }
             return postsList
+        }
+
+        case FETCH_POST: {
+
+            return action.payload
         }
 
         default: {

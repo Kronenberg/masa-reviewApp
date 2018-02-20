@@ -4,7 +4,7 @@ import CreatePostModal from './components/CreatePostModal';
 import Post from './components/Post';
 import { fetchPosts } from '../../actions/events';
 import { withRouter } from 'react-router'
-import { NavLink } from 'react-router-dom';
+
 
 import './GroupPage.css';
 
@@ -64,7 +64,7 @@ class GroupPage extends Component {
     
     render() {
         return (
-            <div style={{ padding: '50px' }}>
+            <div className="post_wrapper">
                 <CreatePostModal groupTitle={this.props.match.params.groupTitle}/>
                 {this.state.postsElements.reverse()}
             </div>

@@ -98,7 +98,8 @@ class PostWithComments extends Component {
                             ...defaultStyle,
                             ...transitionStyles[state]
                         }}>
-                            <Editor id={this.state.postId}
+                            <Editor 
+                                id={this.state.postId}
                                 groupTitle={this.state.groupTitle}
                                 user={this.props.user} />
 

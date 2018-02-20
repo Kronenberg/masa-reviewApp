@@ -32,7 +32,12 @@ class CreatePostModal extends React.Component {
         
         return (
             <div>
-                <button onClick={this.handleOpenModal}>Создать пост</button>
+                <button
+                    className="draftJsToolbar__button__qi1gf" 
+                    style={{marginLeft: '1%'}}
+                    onClick={this.handleOpenModal}>
+                        Создать пост
+                </button>
                 <ReactModal
                     isOpen={this.state.showModal}
                     contentLabel="Create Post Modal"

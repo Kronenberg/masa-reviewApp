@@ -44,16 +44,16 @@ class Post extends Component{
                 <div className="post_content">
                     {ReactHtmlParser(this.state.content)}
                 </div>
-                <div className="comments">
-                    <p>
-                       {
-                        this.props.comments ? 
-                            null : 
-                            <NavLink to={`/${this.props.groupTitle}/${this.props.postId}`} 
-                                     activeClassName="selected" >
-                                     комментарии
-                            </NavLink>
-                       }
+                <div style={{ position: 'relative' }}>
+                    <p style={{ background: '#black'}}>
+                        {
+                            this.props.comments ?
+                                null :
+                                <a style={{ color: '#333 !important', position: 'absolute', left: '20px', bottom: '20px' }} to={`/${this.props.groupTitle}/${this.props.postId}`}
+                                    activeClassName="selected" >
+                                    комментарии...
+                            </a>
+                        }
                     </p>
                 </div>
                 <div className="user_login">

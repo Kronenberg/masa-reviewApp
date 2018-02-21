@@ -1,3 +1,4 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,600,600i,700,700i,900|Open+Sans:300,300i,400,700);
 .group-list a {
   display: flex;
   align-items: center;
@@ -7,4 +8,4 @@
   text-decoration: none; }
 
 .group-list:hover {
-  background-color: rgba(178, 178, 184, 0.349); }
+  background-color: #1675ce; }

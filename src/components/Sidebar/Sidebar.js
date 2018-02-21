@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
 import GroupNav from './GroupNav/GroupNav'
-
+import Header from '../Header/Header'
 import './Sidebar.css'
 
 export class Sidebar extends Component {
     render(){
         return(
-            <div id="sidebar">
-                <div id='sidebar-wrapper'>
-                    <div className='search-fild'>
-                        <input></input>
+            <div className="sidebar">
+                <div className='sidebar-wrapper'>
+                    <Header />
+                    <div>
+                        <p>Group:</p>
+                        <GroupNav />
                     </div>
-                    <GroupNav />
                 </div>
             </div>
       );

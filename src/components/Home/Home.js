@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
+import './home.css';
 
-export class Home extends Component {
-  constructor(){
-    super();
-  }
-  render(){
-    return(
+class Home extends Component {
+
+  render() {
+    return (
       <div>
         <div>
-            хуууууййййййййййй
+          Тут будет начальная страница приложения
         </div>
       </div>
     );
   }
 }
+
+export default Home;

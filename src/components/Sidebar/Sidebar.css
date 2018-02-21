@@ -1,21 +1,19 @@
-#sidebar {
+@import url(https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,600,600i,700,700i,900|Open+Sans:300,300i,400,700);
+.sidebar {
+  position: fixed;
+  top: 0;
   height: 100vh;
-  width: 20%;
-  min-width: 150px;
+  width: 15%;
   background-color: #02021d;
-  overflow: hidden; }
-  #sidebar li {
+  overflow: hidden;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  color: #fff; }
+  .sidebar p {
+    font-family: "Montserrat", sans-serif;
+    margin-bottom: 0;
+    margin-left: 10px; }
+  .sidebar li {
     list-style: none; }
 
-#sidebar-wrapper {
-  width: 80%;
-  margin: auto; }
-
-.search-fild {
-  text-align: center;
-  margin: 3vh auto 7vh; }
-  .search-fild input {
-    width: 100%;
-    height: 20px;
-    border: 1px solid #000;
-    border-radius: 5px; }
+.sidebar-wrapper a {
+  padding: 0 15px; }

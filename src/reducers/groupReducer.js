@@ -22,12 +22,23 @@ function groupReducer(state = initialState, action) {
             }
         }
         case GET_ALL_GROUPS_SUCCESS: {
+            let groupList = [];
+
+            if(!action.payload){
+                console.log('group list is empty')
+            }else{
+                for (var key in action.payload){
+                    if(action.payload.hasOwnProperty(key)){
+                        groupList.push(action.payload[key])
+                    }
+                }
+            }
             return {
                 ...state,
                 success: true,
                 pending: false,
                 rejected: false,
-                groups: action.payload
+                groups: groupList
             }
         }
         case GET_ALL_GROUPS_REJECTED: {

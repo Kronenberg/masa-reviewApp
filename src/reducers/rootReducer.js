@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
-import { firebaseReducer } from 'react-redux-firebase'
+import { reducer as reduxFormReducer } from 'redux-form';
+import { firebaseReducer } from 'react-redux-firebase';
 
 // @REDUCERS
 import testReducer from './testReducer';
@@ -13,7 +14,8 @@ const rootRecuer =  combineReducers({
   groupReducer: groupReducer,
   postsReducer: postsReducer,
   firebase: firebaseReducer,
-  authReducer: authReducer
+  authReducer: authReducer,
+  form: reduxFormReducer
 });
 
 export default rootRecuer;

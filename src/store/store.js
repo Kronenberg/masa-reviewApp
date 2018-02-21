@@ -7,6 +7,7 @@ import { reactReduxFirebase, getFirebase } from 'react-redux-firebase';
 import { createLogger } from 'redux-logger'
 import thunk from 'redux-thunk';
 import  { runTheApp } from '../actions/globalActions';
+import { authListener } from '../actions/events';
  
 const fbConfig = {
 	apiKey: "AIzaSyC29RdE1-GOOrw_db5EhI0bn4hrWhR3Z1s",
@@ -33,17 +34,13 @@ const store = createStore(
 	rootReducer,
 	initialState,
 	compose(
-	applyMiddleware(logger, thunk.withExtraArgument(getFirebase)), // Pass getFirebase function as extra argument
+		applyMiddleware(logger, thunk.withExtraArgument(getFirebase)
+	), // Pass getFirebase function as extra argument
 	reactReduxFirebase(firebase, config)
 	)
 );
 
-// let store = createStore(
-// 	rootReducer,
-// 	applyMiddleware(logger, thunk)
-// )
-
-
 store.dispatch(runTheApp())
+store.dispatch(authListener())
 
 export default store;

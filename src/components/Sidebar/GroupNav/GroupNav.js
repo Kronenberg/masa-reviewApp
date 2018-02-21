@@ -8,53 +8,54 @@ import { createAccount, createAccountToInitial } from '../../../actions/auth';
 
 import "./GroupNav.css"
 
-
 class GroupNav extends Component {
-  constructor(){
-    super();
-  }
 
-  componentWillMount() {
-    this.props.getAllGroups();
-    this.props.createAccount('bigcheeseh@gmail.com', '123456')
-  }
-
-  render(){
-    //console.log(this.props.groupStatus);
-    var groups = [];
-    if(this.props.groupStatus && this.props.groupStatus.groups) {   
-      _.mapValues(this.props.groupStatus.groups, (item) => {
-        groups.push(
-          <Group 
-            key={item.index}
-            title={item.nameUS}
-            index={item.index}
-          />
-        )
-       })
+    constructor() {
+      super();
     }
-    return(
-      <div className="group_nav">
-        <ul>
-            {this.props.groupStatus.pending ? 'Loading' : groups }
-        </ul>
-      </div>
-    );
-  }
-}
 
-const mapStateToProps = (state) => {
-      return {
-          groupStatus: state.groupReducer
-      }
-  }
-
-const  mapDispatchToProps = (dispatch) => {
-  return {
-    getAllGroups: bindActionCreators(getAllGroups, dispatch),
-    createAccount: bindActionCreators(createAccount, dispatch)
-  }
-}
+    componentWillMount() {
+      this.props.getAllGroups();
+    }
+    
+    renderGroups = () => {
+      if (this.props.groupStatus && this.props.groupStatus.groups) {
+        return this.props.groupStatus.groups.map((item) => {
+          return (
+            <Group
+              key={item.index}
+              title={item.nameUS}
+              index={item.index}
+              image={item.image}
+            />
+          )
+        })
   
+      }
+    }
+
+    render() {
+      //console.log(this.props.groupStatus);
+  
+      return (
+        <div>
+            {this.props.groupStatus.pending ? 'Loading' : this.renderGroups()}
+        </div>
+      );
+    }
+  }
+  
+  const mapStateToProps = (state) => {
+    return {
+      groupStatus: state.groupReducer
+    }
+  }
+  
+  const mapDispatchToProps = (dispatch) => {
+    return {
+      getAllGroups: bindActionCreators(getAllGroups, dispatch),
+      createAccount: bindActionCreators(createAccount, dispatch)
+    }
+  }
 
 export default connect(mapStateToProps, mapDispatchToProps)(GroupNav);

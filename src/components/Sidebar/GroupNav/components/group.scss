@@ -1,3 +1,5 @@
+@import "../../../../_variables.scss";
+
 .group-list {
     
     a{
@@ -10,6 +12,7 @@
     }
 
     &:hover {
-        background-color: rgba(178, 178, 184, 0.349);
+        background-color: $golubenikiy;
     }
 }
+

@@ -3,7 +3,24 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@mikeljames/draft-js-drag-n-drop-upload-plugin": "^2.0.1",
+    "antd": "^3.2.1",
+    "dd": "^0.6.0",
+    "draft-js": "^0.10.5",
+    "draft-js-alignment-plugin": "^2.0.1",
+    "draft-js-buttons": "^2.0.1",
+    "draft-js-drag-n-drop-plugin": "^2.0.1",
+    "draft-js-emoji-plugin": "^2.0.1",
+    "draft-js-export-html": "^1.2.0",
+    "draft-js-focus-plugin": "^2.0.1",
+    "draft-js-image-plugin": "^2.0.1",
+    "draft-js-plugins-editor": "^2.0.4",
+    "draft-js-resizeable-plugin": "^2.0.1",
+    "draft-js-static-toolbar-plugin": "^2.0.1",
     "firebase": "^4.8.2",
+    "firebase-admin": "^5.8.2",
+    "firebase-tools": "^3.17.4",
+    "jquery": "^3.2.1",
     "lodash": "^4.17.4",
     "node-sass": "^4.7.2",
     "node-sass-chokidar": "0.0.3",
@@ -11,14 +28,19 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-helmet": "^5.2.0",
+    "react-html-parser": "^2.0.2",
     "react-modal": "^3.1.10",
     "react-redux": "^5.0.6",
     "react-redux-firebase": "^2.0.0",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.17",
     "redux": "^3.7.2",
+    "redux-form": "^7.2.1",
     "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "token-generator": "^1.0.0",
+    "uid-generator": "^1.0.0",
+    "uuid": "^3.2.1"
   },
   "scripts": {
     "build-css": "node-sass-chokidar src/ -o src/",
@@ -29,5 +51,8 @@
     "build": "npm-run-all build-css build-js",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "babel-plugin-import": "^1.6.5"
   }
 }

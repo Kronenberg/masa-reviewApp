@@ -1,19 +1,12 @@
-* {
+@import "variables.scss";
+
+body {
+    font-family: $font-open-sans;
     margin: 0;
+}
+
+
+ul {
     padding: 0;
-}
-
-#wrapper {
-    width: 80%;
-}
-
-#app-wrapper {
-    display: flex;
-    flex-flow: row wrap;
-    width: 100%;
-}
-
-header {
-    width: 100%;
-    background-color: #ededed;
+    margin: 0;
 }

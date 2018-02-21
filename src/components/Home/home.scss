@@ -1,36 +1,14 @@
 @import "../../variables.scss";
 
-.cards{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    .card {
-         @include box-shadow-size(0.5px, 0.5px, 0.5px, #333);
-         position: relative;
-         width: 350px;
-         transition: box-shadow .3s;
-         
-         img{
-             width: 100%;
-            }
-
-         .groupName{
-            position: relative;
-            padding: 20px;
-            .title{
-                font-size: 18px;
-                color: black;
-                margin: 0;
-            }
-        }
-        
-    }
-
-    .card:hover{
-        @include box-shadow-size(2px, 2px, 3px, #AAA);
-    }
+.main{
+  background: url("https://images.unsplash.com/photo-1469041797191-50ace28483c3?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=fb31e851004795b3a6c72168e160cd89&dpr=1&auto=format&fit=crop&w=1000&q=80&cs=tinysrgb");
+  background-size: cover;
 }
 
- a {
-    text-decoration: none;
+.main_logo {
+  background: url(logo.svg);
+  background-size: cover;
+  width: 100vh;
+  height: 100vh;
+  margin: auto; 
 }

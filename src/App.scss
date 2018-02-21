@@ -5,29 +5,8 @@ body {
     margin: 0;
 }
 
-nav {
-    display: flex !important;
-    font-family: $font-monserrat;
-    justify-content: space-between;
-    padding: 15px 30px 6px 30px!important;
-    @include box-shadow-size(0, 1px, 1px, #555);
-    ul {
-        li {
-            display: inline-block;
-            margin: 0 5px;
-            a {
-              text-decoration: none!important;
-            }
-            a:active{
-                text-decoration: none!important;
-            }
-        }
-    }
 
-    .logo {
-        margin: 16px 0;
-        text-transform: uppercase;
-        font-weight: bold;
-        font-size: $heading;
-    }
+ul {
+    padding: 0;
+    margin: 0;
 }

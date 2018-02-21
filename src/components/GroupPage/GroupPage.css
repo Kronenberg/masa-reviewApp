@@ -110,7 +110,8 @@ figure {
   margin: 0; }
   figure img {
     width: 100%;
-    object-fit: cover; }
+    object-fit: cover;
+    max-width: 100%; }
 
 .user_login {
   display: flex;

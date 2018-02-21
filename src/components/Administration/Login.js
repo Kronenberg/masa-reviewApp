@@ -3,7 +3,7 @@ import Administration from './components/Administration';
 import { connect } from 'react-redux';
 import { loginViaFirebase } from '../../actions/auth';
 import { withRouter } from 'react-router-dom';
-
+import './Administration.css';
 
 
 class Login extends Component {
@@ -39,17 +39,19 @@ class Login extends Component {
     render() {
         return (
 
-            <div>
-                <h1>Login</h1>
-                <Administration register={this.loginViaFirebase} />
-                {   
-                    this.state.error ? 
-                        
-                        <p style={{color: 'red'}}>{this.state.error}</p> :
-                        !this.state.emailVerified && this.state.register ? 
-                        
-                        <p>Verify your email address</p> : null
-                }
+            <div className="administration-wrapper">
+                <div className="administration-content">
+                    <h1>Login</h1>
+                    <Administration register={this.loginViaFirebase} />
+                    {   
+                        this.state.error ? 
+                            
+                            <p style={{color: 'red'}}>{this.state.error}</p> :
+                            !this.state.emailVerified && this.state.register ? 
+                            
+                            <p>Verify your email address</p> : null
+                    }
+                </div>
             </div>
         )
     }

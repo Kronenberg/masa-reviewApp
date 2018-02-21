@@ -4,24 +4,6 @@ body {
   font-family: "Open Sans", sans-serif;
   margin: 0; }
 
-nav {
-  display: flex !important;
-  font-family: "Montserrat", sans-serif;
-  justify-content: space-between;
-  padding: 15px 30px 6px 30px !important;
-  -webkit-box-shadow: 0 1px 1px #555;
-  -moz-box-shadow: 0 1px 1px #555;
-  -ms-box-shadow: 0 1px 1px #555;
-  box-shadow: 0 1px 1px #555; }
-  nav ul li {
-    display: inline-block;
-    margin: 0 5px; }
-    nav ul li a {
-      text-decoration: none !important; }
-    nav ul li a:active {
-      text-decoration: none !important; }
-  nav .logo {
-    margin: 16px 0;
-    text-transform: uppercase;
-    font-weight: bold;
-    font-size: 18px; }
+ul {
+  padding: 0;
+  margin: 0; }

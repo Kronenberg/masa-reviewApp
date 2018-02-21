@@ -1,0 +1,13 @@
+.form {
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.2s ease-in-out, opacity 0.2s ease-in-out; }
+
+.form.active {
+  opacity: 1;
+  max-height: 650px; }
+
+.draftJsToolbar__button__qi1gf.add_form {
+  background: #1675ce;
+  color: #fefefe;
+  margin: 20px 0; }

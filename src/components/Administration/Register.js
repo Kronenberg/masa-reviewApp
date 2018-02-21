@@ -35,10 +35,12 @@ class Register extends Component{
     render(){
         const { error } = this.state;
         return (
-            <div>
-                <h1>Registration</h1> 
-                <Administration register={this.createAccount}/>
-                {error ? <p style={{color: 'red'}}>{error}</p> : null}
+            <div className="administration-wrapper">
+                <div className="administration-content">
+                    <h1>Registration</h1> 
+                    <Administration register={this.createAccount}/>
+                    {error ? <p style={{color: 'red'}}>{error}</p> : null}
+                </div>
             </div>
         )
     }

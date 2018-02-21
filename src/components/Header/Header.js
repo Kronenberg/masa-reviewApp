@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { createAccountToInitial, verifyLogin } from '../../actions/auth'
 import { NavLink } from 'react-router-dom';
 
+import './Header.css'
+
 
 class Header extends Component{
 
@@ -36,23 +38,18 @@ componentWillReceiveProps(nextProps){
 render(){
     const { auth } = this.props;
     return (
-            <nav>
+            <header>
                 <div>
-                    <ul>
-                        <li><NavLink to="/" activeClassName="selected" className="logo">Logo</NavLink></li>
-                        <li><NavLink to="/" activeClassName="selected">Programs</NavLink></li>
-                        <li><NavLink to="/chat" activeClassName="selected">Chat</NavLink></li>
-                    </ul>
+                    <NavLink to="/" activeClassName="selected" className="logo">Logo</NavLink>
                 </div>
-                <div>
+                <div className='search-fild'>
+                    <input></input>
+                </div>
+                <div className='login'>
+                    <img className='avatar' 
+                         src='https://vistanews.ru/uploads/posts/2017-04/medium/1492704380_02e99a1661c5bfa9d3ebecb16dafe34a_xl.jpg'
+                         style={{display: this.state.login ? 'inline' : 'none'}} />               
                     <ul>
-                        {
-                            auth.success || this.state.registration ?
-                            
-                            <li><NavLink to="/" onClick={this.signOut}>Sign Out</NavLink></li>
-                            : 
-                            <li><NavLink to="/administration/register" activeClassName="selected">Create Account</NavLink></li>
-                        }
                         {
                             this.state.email && this.state.login ?
                             
@@ -60,9 +57,19 @@ render(){
                             :
                             <li><NavLink to="/administration/login" activeClassName="selected">Log In</NavLink></li>
                         }
+                        {
+                            auth.success || this.state.registration ?
+                            
+                            <li><NavLink to="/" onClick={this.signOut}>Sign Out</NavLink></li>
+                            : 
+                            <li><NavLink to="/administration/register" activeClassName="selected">Create Account</NavLink></li>
+                        }
                     </ul>
                 </div>
-            </nav>    
+                <div className='chat'>
+                    <NavLink to="/chat" activeClassName="selected">Chat</NavLink>
+                </div>
+            </header>    
         )
     }
 

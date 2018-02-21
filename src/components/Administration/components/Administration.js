@@ -16,11 +16,11 @@ const renderFields = () => {
 const Register = (props) => {
     const { handleSubmit, pristine, reset, submitting, register } = props
     return (
-        <form onSubmit={handleSubmit(register)}>
+        <form className='admin-form' onSubmit={handleSubmit(register)}>
             { renderFields() }
-            <div>
+            <div className="button-wrapper">
                 <button type="submit" disabled={submitting}>Submit</button>
-                <button type="button" disabled={pristine || submitting} onClick={reset}>Clear Values</button>
+                <button type="button" disabled={pristine || submitting} onClick={reset}>Clear</button>
             </div>
         </form>
     )

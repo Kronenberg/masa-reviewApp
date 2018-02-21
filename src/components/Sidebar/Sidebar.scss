@@ -1,0 +1,27 @@
+@import "../../_variables.scss";
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    height: 100vh;
+    min-width:150px;
+    width: 15%;
+    background-color: rgb(2, 2, 29);
+    overflow: hidden;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    color: #fff;
+    font-size: 18px;
+    p {
+        font-family: $font-monserrat;
+        margin-bottom: 0;
+        padding: 15px 15px;
+    }
+
+    li {
+        list-style: none;
+    }
+}
+
+.sidebar-wrapper{
+    a {padding: 15px 15px;}
+}

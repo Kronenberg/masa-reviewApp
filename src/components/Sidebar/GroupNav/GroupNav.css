@@ -1,0 +1,11 @@
+.group-nav ul {
+  display: flex;
+  margin: auto;
+  align-items: center; }
+
+a {
+  color: #FEFEFE !important;
+  text-decoration: none !important; }
+
+a:active {
+  color: #FEFEFE !important; }

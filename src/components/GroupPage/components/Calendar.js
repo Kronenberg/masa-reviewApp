@@ -6,6 +6,7 @@ import { Input, Switch, Button } from 'antd';
 import { addEvent, fetchEvents } from '../../../actions/events';
 import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
+import './calendar.css';
 
 // Setup the localizer by providing the moment (or globalize) Object
 // to the correct localizer.
@@ -116,7 +117,8 @@ class Calendar extends Component {
         end: '',
         endTime: '',
         desc:'',
-        switch:false
+        switch:false,
+        showForm: false
     }
     onChange(checked) {
         console.log(`switch to ${checked}`);
@@ -142,7 +144,7 @@ class Calendar extends Component {
     renderFormRows = ()=>{
         return eventSchema.map((item) => {
             return (
-                <div style={{ margin: '5px', width: '50%' }}>
+                <div style={{ margin: '5px', width: '50%', padding: '5px' }}>
                     <label>{item.label}</label>
                     <Input value={this.state[item.name]} 
                            onChange={(e)=>this.setState({[item.name]: e.target.value})} 
@@ -158,21 +160,28 @@ class Calendar extends Component {
                 <div className="group_header" style={{ textAlign: 'center' }}>
                     <h1>Календарь группы {this.props.match.params.groupTitle}</h1>
                 </div>
-                <div className="add_event_form" style={{margint: 'auto', padding: '1%'}}>
-                    <h4>Добавить Событие</h4>
-                    <form onSubmit={this.handleSubmit}>
-                        {this.renderFormRows()}
-                        <div style={{ margin: '5px', width: '50%' }}>
-                            <label>На весь день?</label>
-                            <Switch ref="switch" onChange={()=>this.setState({switch: !this.state.switch})} />
-                        </div>
-                            <Button type="primary" htmlType="submit" className="login-form-button">
-                               Отправить
-                            </Button>
-                    </form>
+                <button onClick={() => this.setState({ showForm: !this.state.showForm })}
+                    className="draftJsToolbar__button__qi1gf add_form">
+                    Добавить Событие
+                </button>
+                <div className={`form ${this.state.showForm ? 'active':''}`}>
+                    
+                    <div className="add_event_form" style={{margint: 'auto', padding: '1%'}}>
+                        <h4>Добавить Событие</h4>
+                        <form onSubmit={this.handleSubmit}>
+                            {this.renderFormRows()}
+                            <div style={{ margin: '5px', width: '50%', padding: '5px' }}>
+                                <label>На весь день?</label>
+                                <Switch style={{marginLeft: '5px'}} ref="switch" onChange={()=>this.setState({switch: !this.state.switch})} />
+                            </div>
+                                <Button type="primary" htmlType="submit" className="login-form-button">
+                                Отправить
+                                </Button>
+                        </form>
+                    </div>
                 </div>
-                <button onClick={this.addEvent}>Добавить Событие</button>
-                <div style={{height: '100vh'}}>
+               
+                <div style={{width:'82%',height: '80vh', position:'absolute', zIndex: '100'}}>
                     <BigCalendar
                         events={this.props.events}
                         views={allViews}

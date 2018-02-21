@@ -1,4 +1,4 @@
-import { SAVE_POST, SAVE_COMMENT, DELETE_POST, FETCH_POSTS, FETCH_POST, EMAIL_SENDED, EMAIL_DISPATCH_ERROR } from '../ActionsTYPES/TYPES'
+import { SAVE_POST, SAVE_COMMENT, DELETE_POST, FETCH_POSTS, FETCH_POST, FETCH_EVENTS, SAVE_EVENT, EMAIL_SENDED, EMAIL_DISPATCH_ERROR } from '../ActionsTYPES/TYPES'
 
 
 export const savePost = (post) =>
@@ -13,6 +13,29 @@ export const savePost = (post) =>
                 dispatch({ type: SAVE_POST, payload: err })
             })
     }
+export const addEvent = (event) =>
+    (dispatch, getState, getFirebase) => {
+        const firebase = getFirebase()
+        firebase.database().ref(`groups/${event.groupTitle}/calendar`)
+            .push(event)
+            .then(() => {
+                dispatch({ type: SAVE_EVENT, payload: 'Success' })
+            })
+            .catch((err) => {
+                dispatch({ type: SAVE_EVENT, payload: err })
+            })
+    }
+
+export const fetchEvents = (groupTitle) => (dispatch, getState, getFirebase) => {
+    const firebase = getFirebase()
+    const posts = firebase.database().ref(`groups/${groupTitle}/calendar`)
+
+    posts.on('value', function (snapshot) {
+
+        dispatch({ type: FETCH_EVENTS, payload: snapshot.val() || [] })
+    });
+};
+
 
 export const saveComment = (post) =>
     (dispatch, getState, getFirebase) => {

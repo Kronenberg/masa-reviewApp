@@ -40,15 +40,25 @@
 
 .draftJsToolbar__button__qi1gf.cancel {
   color: black;
-  background: #fdfdfd; }
+  background: #fdfdfd;
+ }
+
+
+.draftJsToolbar__button__qi1gf.calendar {
+  color: white;
+  background: #2ed0ec; 
+  float: right}
+
 
 .comment_button {
   margin-bottom: 1%;
   margin-left: 5% }
 
 .delete_post {
-  display: flex;
-  justify-content: flex-end;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  z-index: 2;
   button {
     background: white;
     color: rgb(206, 39, 39);
@@ -108,7 +118,7 @@
 figure{ 
       margin: 0;
       img {
-        max-width: 100%;
+        width: 100%;
         object-fit: cover;
       }
   }

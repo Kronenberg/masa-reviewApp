@@ -7,12 +7,14 @@ import testReducer from './testReducer';
 import groupReducer from './groupReducer';
 import postsReducer from './postsReducer';
 import authReducer from './authReducer';
+import eventsReducer from './eventsReducer';
 
 // @ROOT REDUCER
 const rootRecuer =  combineReducers({
   testReducer: testReducer,
   groupReducer: groupReducer,
   postsReducer: postsReducer,
+  eventsReducer: eventsReducer,
   firebase: firebaseReducer,
   authReducer: authReducer,
   form: reduxFormReducer

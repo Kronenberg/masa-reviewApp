@@ -85,6 +85,9 @@ class PostWithComments extends Component {
 
         this.setState({commentsElements})
     }
+    handleCloseEditor=()=>{
+        this.setState({ showEditor: !this.state.showEditor })
+    }
     render(){
         return(
             <div className="post_wrapper">
@@ -101,7 +104,8 @@ class PostWithComments extends Component {
                             <Editor 
                                 id={this.state.postId}
                                 groupTitle={this.state.groupTitle}
-                                user={this.props.user} />
+                                user={this.props.user}
+                                handleCloseModal={this.handleCloseEditor} />
 
                         </div>
                     )}

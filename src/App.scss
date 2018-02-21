@@ -1,22 +1,25 @@
 @import "variables.scss";
-
+@import '~antd/dist/antd.css';
 body {
     font-family: $font-open-sans;
     margin: 0;
 }
 
 nav {
-    display: flex;
+    display: flex !important;
     font-family: $font-monserrat;
     justify-content: space-between;
-    padding: 5px 30px;
+    padding: 15px 30px 6px 30px!important;
     @include box-shadow-size(0, 1px, 1px, #555);
     ul {
         li {
             display: inline-block;
             margin: 0 5px;
             a {
-              text-decoration: none;
+              text-decoration: none!important;
+            }
+            a:active{
+                text-decoration: none!important;
             }
         }
     }

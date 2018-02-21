@@ -74,14 +74,14 @@ class EditorComponent extends React.Component {
 
             this.props.savePost({ content: stateToHTML(contentState), groupTitle, user })
 
-            this.props.handleCloseModal()
         }else{
-
+            
             const { groupTitle, id } = this.props;
-
+            
             this.props.saveComment({ groupTitle, id, content: stateToHTML(contentState)}) 
         }
         
+        this.props.handleCloseModal()
         
         this.setState({ editorState: EditorState.createEmpty() });
     }
@@ -89,9 +89,9 @@ class EditorComponent extends React.Component {
     handleClose = () => {
         this.setState({ editorState: EditorState.createEmpty() });
 
-        if(this.props.modal){
-            this.props.handleCloseModal()
-        }
+        
+        this.props.handleCloseModal()
+        
     }
     render() {
 

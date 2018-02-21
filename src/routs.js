@@ -9,6 +9,7 @@ import GroupPage from './components/GroupPage/GroupPage';
 import Register from './components/Administration/Register';
 import Login from './components/Administration/Login';
 import PostWithComments from './components/GroupPage/PostWithComments';
+import Calendar from './components/GroupPage/components/Calendar';
 
 const Routs = () => (
     <Switch>
@@ -18,6 +19,7 @@ const Routs = () => (
       <Route exact path='/administration/register' component={Register} />
       <Route exact path='/administration/login' component={Login} />
       <Route exact path='/:groupTitle' component={GroupPage} />
+      <Route exact path='/:groupTitle/calendar' component={Calendar} />
       <Route exact path='/:groupTitle/:post' component={PostWithComments} />
     </Switch>
   )

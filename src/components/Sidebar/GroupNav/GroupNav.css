@@ -4,8 +4,8 @@
   align-items: center; }
 
 a {
-  color: #FEFEFE !important;
+  color: #FEFEFE;
   text-decoration: none !important; }
 
 a:active {
-  color: #FEFEFE !important; }
+  color: #FEFEFE; }

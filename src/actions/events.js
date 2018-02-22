@@ -1,4 +1,4 @@
-import { SAVE_POST, SAVE_COMMENT, DELETE_POST, FETCH_POSTS, FETCH_POST, FETCH_EVENTS, SAVE_EVENT, EMAIL_SENDED, EMAIL_DISPATCH_ERROR } from '../ActionsTYPES/TYPES'
+import { SAVE_POST, SAVE_COMMENT, DELETE_POST, FETCH_POSTS, FETCH_POST, FETCH_EVENTS, SAVE_EVENT, EMAIL_SENDED, EMAIL_DISPATCH_ERROR, WHO_IS_TYPING_GET_USER, FETCH_MESSAGES } from '../ActionsTYPES/TYPES'
 
 
 export const savePost = (post) =>
@@ -95,6 +95,17 @@ export const fetchPost = (content) => (dispatch, getState, getFirebase) => {
 };
 
 
+export const fetchChatMessages = () => (dispatch, getState, getFirebase) => {
+    const firebase = getFirebase()
+    const messages = firebase.database().ref(`messages/`)
+
+    messages.on('value', function (snapshot) {
+
+        dispatch({ type: FETCH_MESSAGES, payload: snapshot.val() || [] })
+    });
+};
+
+
 export const authListener = () => (dispatch, getState, getFirebase) => {
     const firebase = getFirebase()
     firebase.auth().onAuthStateChanged(function (user) {
@@ -109,4 +120,13 @@ export const authListener = () => (dispatch, getState, getFirebase) => {
     });
 }
 
+export const whoIsTypingListener = () => (dispatch, getState, getFirebase) => {
+    const firebase = getFirebase()
+    const posts = firebase.database().ref('whoistyping/');
 
+    posts.on('value', function (snapshot) {
+        // notifyMe('New Message!');
+        console.log(snapshot.val());
+        dispatch({ type: WHO_IS_TYPING_GET_USER, payload: snapshot.val() });
+    });
+};

@@ -29,6 +29,8 @@
     "react": "^16.2.0",
     "react-addons-css-transition-group": "^15.6.2",
     "react-big-calendar": "^0.18.0",
+    "react-chat-ui": "^0.3.1",
+    "react-chat-widget": "^2.1.2",
     "react-dom": "^16.2.0",
     "react-helmet": "^5.2.0",
     "react-html-parser": "^2.0.2",

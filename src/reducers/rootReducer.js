@@ -8,7 +8,7 @@ import groupReducer from './groupReducer';
 import postsReducer from './postsReducer';
 import authReducer from './authReducer';
 import eventsReducer from './eventsReducer';
-
+import messagesReducer from './messagesReducer'
 // @ROOT REDUCER
 const rootRecuer =  combineReducers({
   testReducer: testReducer,
@@ -17,7 +17,8 @@ const rootRecuer =  combineReducers({
   eventsReducer: eventsReducer,
   firebase: firebaseReducer,
   authReducer: authReducer,
-  form: reduxFormReducer
+  form: reduxFormReducer,
+  messages: messagesReducer
 });
 
 export default rootRecuer;

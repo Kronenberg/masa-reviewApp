@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createAccountToInitial, verifyLogin } from '../../actions/auth'
 import { NavLink } from 'react-router-dom';
+import logo from './logo_white.png'
 
 import './Header.css'
 
@@ -40,12 +41,17 @@ render(){
     return (
             <header>
                 <div>
-                    <NavLink to="/" activeClassName="selected" className="logo">Logo</NavLink>
+                
+                <NavLink to="/" activeClassName="selected" className="logo">
+                    <img src={logo} width="50px" height="37px" style={{objectFit: 'cover', margin: '0 10px'}}/>
+                        MAЦA
+                </NavLink>
                 </div>
                 <div className='search-fild'>
                     <input></input>
                 </div>
                 <div className='login'>
+                    
                     <img className='avatar' 
                          src='https://vistanews.ru/uploads/posts/2017-04/medium/1492704380_02e99a1661c5bfa9d3ebecb16dafe34a_xl.jpg'
                          style={{display: this.state.login ? 'inline' : 'none'}} />               
@@ -53,7 +59,7 @@ render(){
                         {
                             this.state.email && this.state.login ?
                             
-                            <li><NavLink to="/" >{this.state.email}</NavLink></li>                          
+                            <li className="email"><NavLink to="/" >{this.state.email}</NavLink></li>                          
                             :
                             <li><NavLink to="/administration/login" activeClassName="selected">Log In</NavLink></li>
                         }

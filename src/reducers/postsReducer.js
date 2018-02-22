@@ -17,6 +17,12 @@ function postsReducer(state = initialState, action) {
                 for (var key in action.payload) {
                     if (action.payload.hasOwnProperty(key)) {
                         action.payload[key].postId = key
+
+                        if (action.payload[key].comments){
+                            action.payload[key].commentsCount = Object.keys(action.payload[key].comments).length;
+                        }else{
+                            action.payload[key].commentsCount = 0;
+                        }
                         postsList.push(action.payload[key])
                     }
                 }

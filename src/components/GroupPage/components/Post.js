@@ -4,6 +4,7 @@ import ReactHtmlParser from 'react-html-parser';
 import { connect } from 'react-redux';
 import { deletePost } from '../../../actions/events';
 import { NavLink } from 'react-router-dom';
+import { Badge } from 'antd';
 
 class Post extends Component{
     state = {
@@ -49,10 +50,12 @@ class Post extends Component{
                         {
                             this.props.comments ?
                                 null :
-                                <a style={{ color: '#333', position: 'absolute', left: '15px', bottom: '15px', zIndex: 100 }} href={`/${this.props.groupTitle}/${this.props.postId}`}
+                                <a style={{ color: '#1675ce', position: 'absolute', left: '15px', bottom: '0px'}} href={`/${this.props.groupTitle}/${this.props.postId}`}
                                     activeClassName="selected" >
-                                    комментарии...
-                            </a>
+                                    комментарии
+                                    <Badge count={this.props.commentsCount} style={{ margin: '5px', paddingBottom: '3px', background: '#1675ce', textAlign: 'center', verticalAlign: 'middle'}}/>
+                                </a>
+                                
                         }
                     </p>
                 </div>
@@ -66,7 +69,8 @@ class Post extends Component{
     }
 }
 
-const mapStateToProps = ({ authReducer }) => {
+const mapStateToProps = ({ authReducer, postsReducer }) => {
+
     return {
         userEmail: authReducer.userEmail
     }

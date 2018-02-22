@@ -25,7 +25,7 @@ header {
     }
 
     .logo {
-        margin: 15px 0 5px;
+        margin: 15px 0;
         text-transform: uppercase;
         font-weight: bold;
         font-size: $heading;
@@ -35,7 +35,7 @@ header {
 
 .search-fild {
     text-align: center;
-    margin: 15px auto;
+    margin: 15px 15px;
     input {
         width: 100%;
         height: 30px;
@@ -72,4 +72,8 @@ header {
 
 .chat {
     margin: 10px 0;
+}
+
+.email {
+    font-size: 1vh;
 }

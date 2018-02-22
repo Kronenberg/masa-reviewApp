@@ -61,7 +61,8 @@ class GroupPage extends Component {
                             user={post.user}
                             postId={post.postId}
                             content={post.content}
-                            key={i} />
+                            key={i}
+                            commentsCount={post.commentsCount} />
                 </div>
             )
         })

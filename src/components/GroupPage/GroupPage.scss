@@ -80,7 +80,7 @@
 
 .post_wrapper {
   padding: 3% 7% 0 7%;
-  background-color: rgb(247, 248, 242);
+  background-color: rgb(254, 254, 254);
   min-height: 100vh;;
  }
 
@@ -101,7 +101,7 @@
   border: .5px solid rgb(136, 132, 132);
   border-radius: 2px;
   box-shadow: 1px 1px 1px 1px rgb(187, 181, 181); 
-  padding: 1px;
+  padding: 10px;
   transition: width 0.2s ease-in-out, margin 0.2s ease-in-out, box-shadow 0.2s ease-in-out}
 .comment_panel.active {
   width: 100%;
